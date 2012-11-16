@@ -1,0 +1,42 @@
+#!/bin/bash
+show_usage() {
+    cmd=`basename $0`
+    echo "Use: $cmd <style> <papername>"
+    echo "where <style> is one of the recognized LaTeX styles:"
+    styles=`find $styleshome -type d -d 1`
+    for style in "$styles"
+    do
+        echo `basename $style`
+    done
+    exit 0
+}
+
+# Check if main environment variable has been set.
+if [[ ${LATEX_STYLES+set} != "set" ]]
+then
+    echo "Please set the environment variable LATEX_STYLES"
+    echo "to point to the top of the latex-styles repository."
+    exit 1
+fi
+
+styleshome=$LATEX_STYLES/styles
+if (( $# != 2 ))
+then
+    show_usage
+fi
+
+style=$1
+papername=$2
+paper=$papername/paper
+code=$papername/code
+talk=$papername/talk
+
+mkdir $papername
+mkdir $paper
+mkdir $code
+mkdir $talk
+cp $styleshome/$style/template.tex ./$paper/$papername.tex
+ln -s $styleshome/share/vc ./$paper/
+ln -s $styleshome/share/vc-git.awk ./$paper/
+cd $papername
+git init

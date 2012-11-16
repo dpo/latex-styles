@@ -1,0 +1,160 @@
+%% Git revision number.
+\immediate\write18{sh ./vc -m}
+\input{vc}
+
+%% Macros for Cahier du GERAD number and Git line.
+\makeatletter
+\def\cahierline{\gdef\@cahierline}
+\cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
+\def\gitline{\gdef\@gitline}
+\gitline{\textcolor{gray}{Commit \GITHash\ by \GITAuthorName\ on \VCDateISO}}
+
+%% Page styles.
+\def\ps@firstpage{%\ps@plain
+\def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil\@gitline}%
+     %\global\topskip\normaltopskip}%
+  \let\@evenfoot\@oddfoot
+  \def\@oddhead{\hfil\normalfont\small\@cahierline}%
+  \let\@evenhead\@oddhead % in case an article starts on a left-hand page
+}
+
+\def\ps@myheadings{%
+    \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
+    \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
+    \def\@evenhead{\rlap{\thepage}\hfil\upshape\footnotesize\leftmark\hfil}%          %!
+    \def\@oddhead{\hbox{}\hfil{\upshape\footnotesize\rightmark}\hfil\llap{\thepage}}% %!
+    \let\@mkboth\@gobbletwo
+    \let\sectionmark\@gobble
+    \let\subsectionmark\@gobble
+    }
+\makeatother
+
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage[low-sup]{subdepth}
+
+% Hyperlinks.
+\usepackage{hyperref}
+\hypersetup{
+  breaklinks,
+  colorlinks,
+  citecolor={blue},
+  urlcolor={blue},
+  linkcolor={blue}
+}
+
+% To-do notes.
+\usepackage[textwidth=.95\marginparwidth,
+  backgroundcolor=lightgray,
+  linecolor=orange,
+  textsize=scriptsize]{todonotes}
+
+\makeatletter
+\@mparswitchfalse  % Place todo notes in wide margin.
+\def\listtodoname{Todo List}
+\def\listoftodos{%
+  \section*{\listtodoname}\mbox{~}\par
+  \@starttoc{tdo}
+  }
+\makeatother
+
+\newcommand{\smarttodo}[2][]{%
+  \todo[caption={\protect\hypertarget{todo}{} #2}, #1]{\hyperlink{todo}{#2}
+}}
+
+\usepackage{graphicx}
+
+% Bibliography.
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
+\renewcommand*{\url}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
+
+\newcommand{\http}[1]{\href{http://#1}{\texttt{#1}}}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+% The SIAM style doesn't seem to let us display a table of contents...
+% Let's fix that.
+\makeatletter
+\setcounter{tocdepth}{3}
+\newcommand\tableofcontents{%
+  \section*{\contentsname}\mbox{~}\par
+    \@starttoc{toc}
+    }
+\newcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+\newcommand*\l@subsection{\@dottedtocline{2}{1.5em}{2.3em}}
+\newcommand*\l@subsubsection{\@dottedtocline{3}{3.8em}{3.2em}}
+\newcommand*\l@paragraph{\@dottedtocline{4}{7.0em}{4.1em}}
+\newcommand*\l@subparagraph{\@dottedtocline{5}{10em}{5em}}
+\makeatother
+
+% Labels.
+\usepackage[notref,notcite,color]{showkeys}
+ \renewcommand\showkeyslabelformat[1]{%
+ \normalfont\scriptsize\ttfamily#1}
+
+% Various commands.
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\minim}{\mathop{\mathrm{minimize}}}
+\newcommand{\minimize}[1]{\displaystyle\minim_{#1}}
+\newcommand{\maxim}{\mathop{\mathrm{maximize}}}
+\newcommand{\maximize}[1]{\displaystyle\maxim_{#1}}
+\newcommand{\st}{\mathop{\mathrm{subject\ to}}}
+\newcommand{\Null}{\mathop{\mathrm{Null}}}
+\newcommand{\cond}{\mathrm{cond}}
+\newcommand{\In}{\mathrm{In}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\half}{\tfrac{1}{2}}
+
+\newcommand{\emach}{\varepsilon_{\text{mach}}}
+
+% A boxed theorem
+\usepackage{boxedminipage}
+\newenvironment{btheorem}{%
+   \setlength{\fboxsep}{4pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{theorem}}
+    {\end{theorem}
+    \end{boxedminipage}
+    %\vspace{0.5\baselineskip}
+    }
+% A boxed corollary
+\newenvironment{bcorollary}{%
+   \setlength{\fboxsep}{4pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{corollary}}
+    {\end{corollary}
+    \end{boxedminipage}
+    %\vspace{0.5\baselineskip}
+    }
+% A boxed lemma
+\newenvironment{blemma}{%
+   \setlength{\fboxsep}{4pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{lemma}}
+    {\end{lemma}
+    \end{boxedminipage}
+    %\vspace{0.5\baselineskip}
+    }
+
+\newtheorem{example}{Example}[section]
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}[section]

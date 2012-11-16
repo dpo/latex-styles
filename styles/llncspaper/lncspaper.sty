@@ -1,0 +1,257 @@
+\ProvidesPackage{defs}
+
+% make a proper TOC despite llncs
+\setcounter{tocdepth}{2}
+\makeatletter
+\renewcommand*\l@author[2]{}
+\renewcommand*\l@title[2]{}
+\renewcommand{\chapter}{\section}
+\makeatletter
+
+\usepackage{natbib}
+
+\usepackage{url}
+%%
+%% Bibliographical References Style
+%%
+\bibpunct{(}{)}{;}{a}{,}{,}
+\setlength{\bibhang}{0pt}
+\setlength{\bibsep}{.45em}
+
+\makeatletter
+\def\cahierline{\gdef\@cahierline}
+\cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
+
+\def\ps@mytitlepage{\let\@mkboth\@gobbletwo
+   \let\@oddfoot\@empty\let\@evenfoot\@empty
+   \def\@evenhead{\normalfont\small\rlap{\@cahierline}\hspace{\headlineindent}%
+                  \hfil}
+   \def\@oddhead{\normalfont\small\hfil\hspace{\headlineindent}%
+                 \llap{\@cahierline}}
+   \def\chaptermark##1{}%
+   \def\sectionmark##1{}%
+   \def\subsectionmark##1{}}
+\makeatother
+
+% For the Cahier du GERAD.
+%\renewcommand{\year}{2020}     % If you don't want the current year.
+\newcommand{\cahiernumber}{07}  % Insert your Cahier du GERAD number.
+
+% For final version.
+%\usepackage{butterma}
+%\idline{J.~Doe and E.~Muster (Eds.): Perfect Publishing, LNCS 9999}
+%\setcounter{page}{101}
+
+\usepackage{subdepth}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage[T1]{fontenc}
+%\usepackage{showframe}
+\usepackage[svgnames]{xcolor}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{xspace}
+\usepackage[colorlinks,breaklinks,citecolor={DarkBlue},urlcolor={blue},linkcolor={DarkBlue}]{hyperref}
+
+% Hyperlink DOIs in the bibliography.
+\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
+\newcommand*{\URL}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
+
+% \usepackage{emp}
+%
+% \ifx\pdftexversion\undefined
+% \usepackage[dvips]{graphicx}
+% \else
+% \usepackage[pdftex]{graphicx}
+% \DeclareGraphicsRule{*}{mps}{*}{}
+% \fi
+
+% Moves axis labels near ticklabels (respects tick label widths).
+\pgfplotsset{compat=1.3}
+\pgfplotsset{
+  tick label style={font=\tiny},
+  title style={font=\scriptsize},
+  label style={font=\scriptsize},
+  legend style={font=\scriptsize}
+}
+
+\newcommand{\http}[1]{\href{http://#1}{\texttt{#1}}}
+\newcommand{\https}[1]{\href{https://#1}{\texttt{#1}}}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+% Declare bold typewriter font with Computer Modern
+\DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
+
+%\DeclareFontShape{OT1}{cmtt}{bx}{n}
+%{<5><6><7><8>cmbtt8%
+%<9>cmbtt9%
+%<10><10.95>cmbtt10%
+%<12><14.4><17.28><20.74><24.88>cmbtt10%
+%}{}
+
+\lstloadlanguages{Python, C++}
+\definecolor{LightYellow}{rgb}{1.0,1.0,0.90}
+\definecolor{DimGray}{rgb}{0.412,0.412,0.412}
+\definecolor{MediumGray}{rgb}{0.5,0.5,0.5}
+\definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
+\definecolor{VeryLightGray}{rgb}{0.96,0.96,0.96}
+\lstset{
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\color{blue}\ttfamily\bfseries,
+  keywordstyle=[2]\color{SteelBlue}\ttfamily\bfseries,
+  commentstyle=\color{MediumGray},
+  identifierstyle=\color{DarkSlateGray},
+  stringstyle=\color{Gray},
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  tabsize=4,
+  numbersep=5pt,
+  backgroundcolor=\color{VeryLightGray},  % {LightYellow},
+  captionpos=b,
+  frame=tb,
+%  language=Python,
+%  keywordstyle={[2]\color{orange}\bfseries},
+  keywordstyle={[3]\color{MediumGray}\bfseries},
+  morekeywords={super,None},
+}
+
+\usepackage{float}
+\usepackage{enumerate}
+
+\floatstyle{ruled}
+
+\newfloat{floatingAlgorithm}{htbp}{loa}[section]
+\floatname{floatingAlgorithm}{Algorithm}
+\newcounter{floatingAlgoStep}
+\renewcommand{\thefloatingAlgoStep}{Step~\arabic{floatingAlgoStep}}
+
+\newenvironment{floatingAlgoDescription}[1]{
+\begin{center}
+	\begin{list}{
+          {\bf \thefloatingAlgoStep.}
+         }{
+         \usecounter{floatingAlgoStep}
+         }
+
+         \setcounter{floatingAlgoStep}{-1}
+         \setlength{\itemsep}{.5em}
+         #1
+    \end{list}
+\end{center}
+}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%\usepackage{lineno}
+
+% if you have landscape tables
+%\usepackage[figuresright]{rotating}
+
+% put your own definitions here:
+%\usepackage{bigstrut}
+%\usepackage{subfigure}
+%\usepackage{xspace}
+
+% To-do notes.
+\usepackage[textwidth=.8\marginparwidth,
+  backgroundcolor=yellow,
+  linecolor=orange,
+  textsize=scriptsize]{todonotes}
+
+\def\R{{\mathbb{R}}}
+\def\Re{{\mathbb{R}}}
+%\def\N{{\mathbb{N}}}
+%\def\Z{{\mathbb{Z}}}
+\def\Q{{\mathbb{Q}}}
+\def\A{\mathcal{A}}
+\def\L{\mathcal{L}}
+\def\B{\mathcal{B}}
+\def\N{\mathcal{N}}
+\def\M{\mathcal{M}}
+\def\xB{x_{\B}}
+\def\xN{x_{\N}}
+\def\cB{c_{\B}}
+\def\cN{c_{\N}}
+\def\AB{A_{\B}}
+\def\AN{A_{\N}}
+\def\bAN{\bar{A}_{\N}}
+
+%Index sets
+\def\Z{\mathcal{Z}}
+\def\P{\mathcal{P}}
+
+\newcommand{\minim}{\mathop{\hbox{minimize}}}
+\newcommand{\minimize}[1]{\displaystyle\minim_{#1}}
+\newcommand{\maxim}{\mathop{\hbox{maximize}}}
+\newcommand{\maximize}[1]{\displaystyle\maxim_{#1}}
+\newcommand{\argminim}{\mathop{\hbox{argmin}}}
+\newcommand{\argmin}[1]{\displaystyle\argminim_{#1}}
+\newcommand{\argmintext}[1]{\argminim_{#1}}
+\newcommand{\st}{\mathop{\hbox{subject to \thinspace}}}
+
+\newcommand\TT{\rule{0pt}{3ex}}
+\newcommand\BB{\rule[-2ex]{0pt}{0pt}}
+
+
+\usepackage{relsize}
+
+%\newcommand*\Cpp{C\kern-0.2ex{\scalebox{0.8}{+\kern-0.4ex+}}}
+\newcommand{\Cpp}{C\nolinebreak\kern-0.1em\raisebox{0.5ex}{\relscale{0.5}\textbf{+}\nolinebreak\kern-0.1em\textbf{+}\xspace}}
+%\kern+0.2em}
+
+\newcommand{\CLP}{CLP\xspace}
+\newcommand{\CyLP}{CyLP\xspace}
+\newcommand{\CBC}{CBC\xspace}
+\newcommand{\CGL}{CGL\xspace}
+\newcommand{\CPLEX}{CPLEX\xspace}
+
+\newcommand{\Class}[1]{\texttt{#1}}
+\newcommand{\Method}[1]{\texttt{#1()}}
+\newcommand{\Attribute}[1]{\texttt{#1}}
+
+%\newcommand{\minim}{\mathop{\text{minimize}}}
+%\newcommand{\minimize}[1]{\displaystyle\minim_{#1}}
+%\newcommand{\st}{\mathop{\text{subject to}}}
+
+\title{%
+  Customizing the Solution Process of COIN-OR's Linear Solvers with Python
+}
+\titlerunning{%
+  Customizing COIN-OR's Linear Solvers with Python
+}
+\author{
+  Mehdi Towhidi\inst{1, 2}
+  \and
+  Dominique Orban \inst{1, 2}
+  \thanks{Research partially supported by NSERC Discovery Grant 299010-04.}
+}
+\institute{
+  Department of Mathematics and Industrial Engineering,
+  \'Ecole Polytechnique,
+  Montr\'eal, QC, Canada.
+  \and
+  GERAD, Montr\'eal, QC, Canada.
+  \\
+  \mailto{mehdi.towhidi@gerad.ca}, \mailto{dominique.orban@gerad.ca}
+}
+\authorrunning{Towhidi, Orban}
+
+% Meta-information for the PDF file generated.
+\pdfinfo{/Author (Mehdi Towhidi, Dominique Orban)
+         /Title (Implementing Customized Pivot Rules in COIN-OR's CLP with
+         Python)
+         /Keywords (Python, Cython, COIN-OR, CLP, Simplex Pivot)}
+
+% For final version, set paper format.
+%\pdfpagesattr{/CropBox [92 112 523 778]} % LNCS page: 152x235 mm
+
+
+\usepackage{tikz}
+
+\usepackage[
+% school,
+% simplified
+]{pgf-umlcd}

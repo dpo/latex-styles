@@ -1,0 +1,73 @@
+\documentclass{siamltex}   % Use [final] when ready.
+
+\usepackage{siampaper}
+
+% For the Cahier du GERAD.
+%\renewcommand{\year}{2020}     % If you don't want the current year.
+\newcommand{\cahiernumber}{42}  % Insert your Cahier du GERAD number.
+
+\title{
+  Bounds on Eigenvalues of Matrices Arising from Interior-Point Methods%
+}
+
+\author{
+  Chen Greif%
+  \thanks{%
+    Department of Computer Science,
+    The University of British Columbia,
+    Vancouver, BC, Canada.
+    E-mail: \mailto{greif@cs.ubc.ca}.
+    Research partially supported by an NSERC Discovery Grant.
+  }
+  \and
+  Erin Moulding%
+  \thanks{%
+    Department of Mathematics,
+    The University of British Columbia,
+    Vancouver, BC, Canada.
+    E-mail: \mailto{moulding@math.ubc.ca}.
+    Research partially supported by an NSERC CGS M Scholarship.
+  }
+  \and
+  Dominique Orban%
+  \thanks{%
+    GERAD and Department of Mathematics and Industrial Engineering,
+    \'Ecole Polytechnique, Montr\'eal, QC, Canada.
+    E-mail: \mailto{dominique.orban@gerad.ca}.
+    Research partially supported by an NSERC Discovery Grant.
+  }
+}
+\date{\today}
+
+\begin{document}
+
+  \maketitle
+
+  \thispagestyle{firstpage}
+  \pagestyle{myheadings}
+
+  \begin{abstract}
+    Insert abstract here. \smarttodo{Write abstract}
+  \end{abstract}
+
+  \tableofcontents
+  \listoftodos\relax
+
+  \section{Introduction}
+
+  This is the introduction. An optimization problem has the general form
+  \begin{equation}
+    \label{eq:opt-problem}
+    \minimize{x \in \R^n} \ f(x) \quad \st \ \ell \leq c(x) \leq u.
+  \end{equation}
+
+  For the real stuff, check \cite{wright-orban-2002}.
+
+  \section{Conclusion}
+
+  Conclusions will come in due time. \smarttodo{Come up with witty conclusions}
+
+  \bibliographystyle{plainnat}
+  \bibliography{test}
+
+\end{document}

@@ -1,0 +1,95 @@
+\documentclass{amsart}
+
+\usepackage{amspaper}
+
+% For the Cahier du GERAD.
+%\renewcommand{\year}{2020}     % If you don't want the current year.
+\newcommand{\cahiernumber}{00}  % Insert your Cahier du GERAD number.
+
+\begin{document}
+
+\title[Short Title]{%
+  Long Title
+}
+
+%    author one information
+\author[A. One]{Author One}
+\address{%
+  Some Lab, Some Univeristy, Some Place
+}
+\email{\mailto{author.one@someplace.edu}}
+\thanks{}
+
+%    author two information
+\author[D. Orban]{Dominique Orban}
+\address{%
+  GERAD and
+  Mathematics and Industrial Engineering Department \\
+  \'Ecole Polytechnique, Montr\'eal, Canada
+}
+\urladdr{\http{www.gerad.ca/~orban}}
+\email{\mailto{dominique.orban@gerad.ca}}
+\thanks{Research partially supported by NSERC Discovery Grant 299010-04}
+
+\subjclass[2010]{90C06, 90C20, 90C30, 90C51, 90C53, 90C55, 65F10, 65F50}
+
+\keywords{%
+  Keyword, keyword, keyword.
+}
+
+\date{\today}
+
+\begin{abstract}
+  This is a ground-breaking paper.
+\end{abstract}
+
+\maketitle
+
+\pagestyle{myheadings}
+
+\tableofcontents
+\listoftodos\relax   % Must appear after toc.
+
+\section{Introduction}
+
+\subsection{Related Work}
+
+\subsection{Notation}
+
+
+\section{Main Stuff}
+
+\begin{blemma}
+  \label{lem:eigs-RW}
+  If $Q$ is positive definite,
+  $A$ has full row rank and $X$ and $Z$ are positive definite,
+  then
+  \begin{align*}
+    \lambda^+ & \geq \lambda_{\min}(Q), \\
+    \lambda^+ & \leq
+      \tfrac{1}{2}
+      \left(
+        \lambda_{\max}(Q) + \sqrt{\lambda_{\max}(Q)^2 + 4 \sigma_1^2}
+      \right)
+  \end{align*}
+  for any positive eigenvalue $\lambda^+$ of $K_2$, and
+  \begin{align*}
+    \lambda^- & \geq
+      \tfrac{1}{2}
+      \left(
+        \lambda_{\min}(Q) - \sqrt{\lambda_{\min}(Q)^2 + 4 \sigma_1^2}
+      \right), \\
+    \lambda^- & \leq
+      \tfrac{1}{2}
+      \left(
+        \lambda_{\max}(Q) - \sqrt{\lambda_{\max}(Q)^2 + 4 \sigma_m^2}
+      \right)
+  \end{align*}
+  for any negative eigenvalue $\lambda^-$ of $K_2$.
+\end{blemma}
+
+\section{Conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{test}
+\end{document}
