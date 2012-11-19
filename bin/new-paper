@@ -36,7 +36,7 @@ mkdir $paper
 mkdir $code
 mkdir $talk
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
-ln -s $styleshome/share/vc ./$paper/
-ln -s $styleshome/share/vc-git.awk ./$paper/
+ln -s $LATEX_STYLES/share/vc-git.awk ./$paper/
+ln -s $LATEX_STYLES/share/vc ./$paper/
 cd $papername
 git init
