@@ -38,7 +38,8 @@ mkdir $talk
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
 ln -s $styleshome/share/vc ./$paper/
 ln -s $styleshome/share/vc-git.awk ./$paper/
-cp $styleshome/share/gitignore ./$paper/.gitignore
+cp $LATEX_STYLES/share/gitignore ./$papername/.gitignore
 cd $papername
 git init
-git add .gitignore
+git add paper code talk .gitignore
+git commit -m 'Initial commit.'
