@@ -38,5 +38,7 @@ mkdir $talk
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
 ln -s $styleshome/share/vc ./$paper/
 ln -s $styleshome/share/vc-git.awk ./$paper/
+cp $styleshome/share/gitignore ./$paper/.gitignore
 cd $papername
 git init
+git add .gitignore
