@@ -1,13 +1,14 @@
 % -- REVISION NUMBER --
-\immediate\write18{sh ./vc -m}
-\input{vc}
+%\immediate\write18{sh ./vc -m}
+%\input{vc}
+\usepackage{gitinfo}
 
 \makeatletter
 \providecommand\@dotsep{5}    % For \listoftodos.
 \def\cahierline{\gdef\@cahierline}
 \cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
 \def\gitline{\gdef\@gitline}
-\gitline{\textcolor{gray}{Commit \GITHash\ by \GITAuthorName\ on \VCDateISO}}
+\gitline{\textcolor{gray}{Commit \gitAbbrevHash\ by \gitAuthorName\ on \gitAuthorIsoDate}}
 
 \def\ps@firstpage{\ps@plain
   \def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil\ttfamily\@gitline

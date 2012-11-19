@@ -26,6 +26,12 @@ then
 fi
 
 style=$1
+if [[ ! -d $styleshome/$style ]]
+then
+    echo "Unrecognized style: $style"
+    exit -1
+fi
+
 papername=$2
 paper=$papername/paper
 code=$papername/code
@@ -36,10 +42,14 @@ mkdir $paper
 mkdir $code
 mkdir $talk
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
-ln -s $styleshome/share/vc ./$paper/
-ln -s $styleshome/share/vc-git.awk ./$paper/
 cp $LATEX_STYLES/share/gitignore ./$papername/.gitignore
 cd $papername
+
+# Initialize git.
 git init
+cp $LATEX_STYLES/share/post-xxx-sample.txt ./.git/hooks/post-checkout
+cp $LATEX_STYLES/share/post-xxx-sample.txt ./.git/hooks/post-commit
+cp $LATEX_STYLES/share/post-xxx-sample.txt ./.git/hooks/post-merge
+chmod +x ./.git/hooks/post-checkout ./.git/hooks/post-commit ./.git/hooks/post-merge
 git add paper code talk .gitignore
 git commit -m 'Initial commit.'

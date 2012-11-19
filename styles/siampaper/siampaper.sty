@@ -1,13 +1,15 @@
 %% Git revision number.
-\immediate\write18{sh ./vc -m}
-\input{vc}
+%\immediate\write18{sh ./vc -m}
+%\input{vc}
+
+\usepackage{gitinfo}
 
 %% Macros for Cahier du GERAD number and Git line.
 \makeatletter
 \def\cahierline{\gdef\@cahierline}
 \cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
 \def\gitline{\gdef\@gitline}
-\gitline{\textcolor{gray}{Commit \GITHash\ by \GITAuthorName\ on \VCDateISO}}
+\gitline{\textcolor{gray}{Commit \gitAbbrevHash\ by \gitAuthorName\ on \gitAuthorIsoDate}}
 
 %% Page styles.
 \def\ps@firstpage{%\ps@plain

@@ -1,113 +1,18 @@
 \documentclass[runningheads]{llncs}
 
-% -- REVISION NUMBER --
-\immediate\write18{sh ./vc -m}
-\input{vc}
-
-%%
-%% Headings.
-%%
-\setcounter{tocdepth}{2}
-\makeatletter
-\renewcommand*\l@author[2]{}
-\renewcommand*\l@title[2]{}
-\renewcommand{\chapter}{\section}
-\def\cahierline{\gdef\@cahierline}
-\cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
-\def\gitline{\gdef\@gitline}
-\gitline{\textcolor{gray}{Commit \GITHash\ by \GITAuthorName\ on \VCDateISO}}
-
-\def\ps@mytitlepage{\let\@mkboth\@gobbletwo
-   \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
-   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
-   \def\@evenhead{\normalfont\small\rlap{\@cahierline}\hspace{\headlineindent}%
-                  \hfil}
-   \def\@oddhead{\normalfont\small\hfil\hspace{\headlineindent}%
-                 \llap{\@cahierline}}
-   \def\chaptermark##1{}%
-   \def\sectionmark##1{}%
-   \def\subsectionmark##1{}}
-
-\def\ps@myheadings{\let\@mkboth\@gobbletwo
-   \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
-   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
-   \def\@evenhead{\normalfont\small\rlap{\thepage}\hspace{\headlineindent}%
-                  \leftmark\hfil}
-   \def\@oddhead{\normalfont\small\hfil\rightmark\hspace{\headlineindent}%
-                 \llap{\thepage}}
-   \def\chaptermark##1{}%
-   \def\sectionmark##1{}%
-   \def\subsectionmark##1{}}
-\makeatother
-
 % For the Cahier du GERAD.
 %\renewcommand{\year}{2020}     % If you don't want the current year.
 \newcommand{\cahiernumber}{00}  % Insert your Cahier du GERAD number.
+
+% For debugging.
+%\usepackage{showframe}
+\usepackage[draft,notref,notcite,color]{showkeys}
+\renewcommand\showkeyslabelformat[1]{\normalfont\footnotesize\ttfamily#1}
 
 % For final version.
 %\usepackage{butterma}
 %\idline{J.~Doe and E.~Muster (Eds.): Perfect Publishing, LNCS 9999}
 %\setcounter{page}{101}
-
-%%
-%% Bibliographical References Style
-%%
-\usepackage{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
-\setlength{\bibhang}{0pt}
-\setlength{\bibsep}{.45em}
-% Hyperlink DOIs in the bibliography.
-\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
-\newcommand*{\URL}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
-
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage[T1]{fontenc}
-%\usepackage{showframe}
-\usepackage[draft,notref,notcite,color]{showkeys}
-\renewcommand\showkeyslabelformat[1]{%
-  \normalfont\footnotesize\ttfamily#1}
-\usepackage[svgnames]{xcolor}
-\usepackage{pgfplots}
-\usepackage{listings}
-\usepackage[colorlinks,citecolor={DarkBlue},urlcolor={blue},linkcolor={DarkBlue}]{hyperref}
-
-% Moves axis labels near ticklabels (respects tick label widths).
-\pgfplotsset{compat=1.3}
-\pgfplotsset{
-  tick label style={font=\tiny},
-  title style={font=\scriptsize},
-  label style={font=\scriptsize},
-  legend style={font=\scriptsize}
-}
-
-\newcommand{\http}[1]{\href{http://#1}{\texttt{#1}}}
-\newcommand{\https}[1]{\href{https://#1}{\texttt{#1}}}
-\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
-
-\lstloadlanguages{Python}
-\definecolor{LightYellow}{rgb}{1.0,1.0,0.90}
-\definecolor{DimGray}{rgb}{0.412,0.412,0.412}
-\definecolor{MediumGray}{rgb}{0.5,0.5,0.5}
-\definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
-\lstset{
-  basicstyle=\scriptsize\ttfamily,
-  keywordstyle=\color{blue},
-  commentstyle=\color{MediumGray},
-  identifierstyle=\color{DarkGray},
-  stringstyle=\color{gray},
-  showstringspaces=false,
-  numbers=left,
-  numberstyle=\tiny,
-  stepnumber=1,
-  numbersep=5pt,
-  backgroundcolor=\color{LightYellow},
-  captionpos=b,
-  frame=tb,
-  language=Python,
-  keywordstyle={[2]\color{orange}},
-  keywordstyle={[3]\color{MediumGray}}
-}
 
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
@@ -116,29 +21,6 @@
 
 % if you have landscape tables
 %\usepackage[figuresright]{rotating}
-
-% put your own definitions here:
-%\usepackage{bigstrut}
-%\usepackage{subfigure}
-%\usepackage{xspace}
-
-% To-do notes.
-\usepackage[textwidth=.8\marginparwidth,
-  backgroundcolor=yellow,
-  linecolor=orange,
-  textsize=scriptsize]{todonotes}
-
-\def\R{{\mathbb{R}}}
-\def\Re{{\mathbb{R}}}
-\def\N{{\mathbb{N}}}
-\def\Z{{\mathbb{Z}}}
-\def\Q{{\mathbb{Q}}}
-\def\A{{\cal A}}
-\def\L{{\cal L}}
-
-\newcommand{\minim}{\mathop{\text{minimize}}}
-\newcommand{\minimize}[1]{\displaystyle\minim_{#1}}
-\newcommand{\st}{\mathop{\text{subject to}}}
 
 \title{%
   Insert Title Here

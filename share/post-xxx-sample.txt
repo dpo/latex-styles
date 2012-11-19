@@ -1,0 +1,31 @@
+#!/bin/sh
+# Post-{commit,checkout,merge} hook for the gitinfo package.
+#
+# This file is adapted from the original post-xxx hook by
+# Brent Longborough and distributed as part of the gitinfo package.
+# The original file may be obtained from
+# http://www.ctan.org/tex-archive/macros/latex/contrib/gitinfo
+#
+# The only difference with the original file resides in the definition of
+# the 'prefixes' variable.
+#
+prefixes="paper"
+for pref in $prefixes
+	do
+	git log -1 --date=short \
+	--pretty=format:"\usepackage[%
+		shash={%h},
+		lhash={%H},
+		authname={%an},
+		authemail={%ae},
+		authsdate={%ad},
+		authidate={%ai},
+		authudate={%at},
+		commname={%an},
+		commemail={%ae},
+		commsdate={%ad},
+		commidate={%ai},
+		commudate={%at},
+		refnames={%d}
+	]{gitsetinfo}" HEAD > $pref/gitHeadInfo.gin
+	done
