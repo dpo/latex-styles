@@ -70,7 +70,7 @@
 \def\listoftodos{\@starttoc{tdo}\listtodoname}
 \makeatother
 
-\usepackage{algorithmic}
+\usepackage{algorithmicx}
 \renewcommand{\algorithmiccomment}[1]{\textcolor{gray}{// \textit{#1}}}
 \usepackage{float}
 \floatstyle{ruled}
@@ -80,6 +80,7 @@
 \makeatletter
 \def\@floatboxreset{\global\@minipagefalse}  % Disable auto centering in floats.
 \def\listofalgorithms{\@starttoc{loa}{List of Algorithms}}
+\def\l@algorithm{\@tocline{0}{3pt plus2pt}{0pt}{1.9em}{}}
 \makeatother
 
 \usepackage{hyperref}
