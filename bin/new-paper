@@ -3,7 +3,7 @@ show_usage() {
     cmd=`basename $0`
     echo "Use: $cmd <style> <papername>"
     echo "where <style> is one of the recognized LaTeX styles:"
-    styles=`find $styleshome -type d -d 1`
+    styles=`find $styleshome -type d -d 1 -name "*paper"`
     for style in "$styles"
     do
         echo `basename $style`
