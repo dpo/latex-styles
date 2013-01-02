@@ -1,15 +1,17 @@
-% -- REVISION NUMBER --
-%\immediate\write18{sh ./vc -m}
-%\input{vc}
-\usepackage{gitinfo}
+%
+% Import definitions common to all styles.
+%
+\usepackage{latex_styles_common}
+%
+% Definitions specific to amspaper.
+%
+\setlength{\footskip}{30pt}
+\renewcommand*{\URL}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
 
 \makeatletter
-\providecommand\@dotsep{5}    % For \listoftodos.
-\def\cahierline{\gdef\@cahierline}
-\cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
-\def\gitline{\gdef\@gitline}
-\gitline{\textcolor{gray}{Commit \gitAbbrevHash\ by \gitAuthorName\ on \gitAuthorIsoDate}}
-
+%
+% Page styles.
+%
 \def\ps@firstpage{\ps@plain
   \def\@oddfoot{\normalfont\scriptsize \hfil\thepage\hfil\ttfamily\@gitline
      \global\topskip\normaltopskip}%
@@ -34,211 +36,34 @@
   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
   \let\@mkboth\markboth
 }
-\makeatother
-
-\setlength{\footskip}{30pt}
-
-\usepackage{amssymb}
-\usepackage{microtype}
-\usepackage[low-sup]{subdepth}  % Equalize depth of subscripts. Amazing!
-\usepackage{xspace}
-\usepackage{boxedminipage}
-\usepackage{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
-
-\usepackage[svgnames]{xcolor}
-
-% Show equations labels in margin.
-\usepackage[notref,notcite,color]{showkeys}
-\renewcommand\showkeyslabelformat[1]{%
-  \normalfont\scriptsize\ttfamily#1}
-
-\usepackage{tikz}
-\usetikzlibrary{matrix,arrows}
-
-\usepackage[textwidth=.8\marginparwidth,
-  backgroundcolor=lightgray,
-  linecolor=orange,
-  textsize=scriptsize]{todonotes}
-
-\newcommand{\smarttodo}[2][]{%
-  \todo[caption={\protect\hypertarget{todo}{} #2}, #1]{\hyperlink{todo}{#2}
-}}
-
-\makeatletter
+%
+% To do list.
+%
+\providecommand\@dotsep{5}
 \def\listtodoname{List of Todos}
 \def\listoftodos{\@starttoc{tdo}\listtodoname}
-\makeatother
-
-\usepackage{algorithmicx}
-\renewcommand{\algorithmiccomment}[1]{\textcolor{gray}{// \textit{#1}}}
-\usepackage{float}
-\floatstyle{ruled}
-\newfloat{algorithm}{htbp}{loa}[section]
-\floatname{algorithm}{Algorithm}
-
-\makeatletter
+%
+% List of algorithms.
+%
 \def\@floatboxreset{\global\@minipagefalse}  % Disable auto centering in floats.
 \def\listofalgorithms{\@starttoc{loa}{List of Algorithms}}
 \def\l@algorithm{\@tocline{0}{3pt plus2pt}{0pt}{1.9em}{}}
 \makeatother
-
-\usepackage{hyperref}
-\hypersetup{
-  breaklinks,
-  colorlinks,
-  citecolor={DarkBlue},
-  urlcolor={DarkBlue},
-  linkcolor={DarkBlue}
-}
-
-% Hyperlink DOIs in the bibliography.
-\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
-\renewcommand*{\URL}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
-
-\newcommand{\http}[1]{\href{http://#1}{\texttt{\nolinkurl{#1}}}}
-\newcommand{\ftp}[1]{\href{ftp://#1}{\texttt{#1}}}
-\newcommand{\https}[1]{\href{https://#1}{\texttt{#1}}}
-\newcommand{\sftp}[1]{\href{sftp://#1}{\texttt{#1}}}
-\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{Alg}{Algorithm}[section]
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
 \numberwithin{equation}{section}
-%%
-%% Optitmization "operators".
-%%
-\newcommand{\minim}{\mathop{\textup{minimize}}}
-\newcommand{\minimize}[1]{\displaystyle\minim_{#1}}
-\newcommand{\argminim}{\mathop{\textup{arg min}}}
-\newcommand{\argmin}[1]{\displaystyle\argminim_{#1}}
-\newcommand{\maxim}{\mathop{\textup{maximize}}}
-\newcommand{\maximize}[1]{\displaystyle\maxim_{#1}}
-\newcommand{\argmaxim}{\mathop{\textup{arg max}}}
-\newcommand{\argmax}[1]{\displaystyle\argmaxim_{#1}}
-\newcommand{\st}{\mathop{\textup{subject to}}}
-%%
-%% Linear algebra "operators"
-%%
-\newcommand{\nnz}{\mathop{\text{nnz}}}
+%
+% Operators.
+%
 \newcommand{\diag}{\mathop{\text{diag}}}
-\newcommand{\blkdiag}{\mathop{\text{blkdiag}}}
-\newcommand{\Null}{\mathop{\text{Null}}}
-\newcommand{\Range}{\mathop{\text{Range}}}
-\newcommand{\Span}{\mathop{\text{Span}}}
 \newcommand{\rank}{\mathop{\text{rank}}}
-\newcommand{\cond}{\mathop{\text{cond}}}
-\newcommand{\trace}{\mathop{\text{trace}}}
-\newcommand{\dtm}{\mathop{\text{det}}}
-\newcommand{\band}{\mathop{\text{band}}}
-\newcommand{\tr}{\mathop{\text{tr}}}
-\renewcommand{\vec}{\mathop{\textbf{vec}}}
-
-\newcommand{\labeleq}[1]{\label{eq:#1}}
-\newcommand{\labelsec}[1]{\label{sec:#1}}
-\newcommand{\labelalg}[1]{\label{alg:#1}}
-\newcommand{\labeldef}[1]{\label{def:#1}}
-\newcommand{\labelthm}[1]{\label{thm:#1}}
-\newcommand{\labelfig}[1]{\label{fig:#1}}
-
-\newcommand{\refeq}[1]{(\ref{eq:#1})}
-\newcommand{\refsec}[1]{\ref{sec:#1}}
-\newcommand{\refalg}[1]{\ref{alg:#1}}
-\newcommand{\refdef}[1]{\ref{def:#1}}
-\newcommand{\refthm}[1]{\ref{thm:#1}}
-\newcommand{\reffig}[1]{\ref{fig:#1}}
-
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Sn}{\mathbb{S}^n}
-
-\newcommand{\A}{\mathcal{A}}
-\newcommand{\D}{\mathcal{D}}
-\newcommand{\E}{\mathcal{E}}
-\newcommand{\F}{\mathcal{F}}
-\newcommand{\G}{\mathcal{G}}
-\renewcommand{\L}{\mathcal{L}}
-
-% vec'd matrices.
-\newcommand{\vecop}[1]{\mathbf{#1}}
-\newcommand{\vecC}{\vecop{C}}
-\newcommand{\vecS}{\vecop{S}}
-\newcommand{\vecX}{\vecop{X}}
-\newcommand{\vecZ}{\vecop{Z}}
-
-\newcommand{\half}{\tfrac{1}{2}}
-\newcommand{\shalf}{\frac12}
-\newcommand{\vect}[1]{%
-  \begin{bmatrix}
-    #1
-  \end{bmatrix}
-}
-
-% A boxed theorem
-\newenvironment{btheorem}{%
-   \setlength{\fboxsep}{8pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{theorem}}
-    {\end{theorem}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
-% A boxed corollary
-\newenvironment{bcorollary}{%
-   \setlength{\fboxsep}{8pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{corollary}}
-    {\end{corollary}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
-% A boxed lemma
-\newenvironment{blemma}{%
-   \setlength{\fboxsep}{8pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{lemma}}
-    {\end{lemma}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
-%%
-%% Bordered matrices.
-%%
-\makeatletter
-  \newif\if@borderstar
-  \def\bordermatrix{\@ifnextchar*{%
-    \@borderstartrue\@bordermatrix@i}{\@borderstarfalse\@bordermatrix@i *}%
-  }
-  \def\@bordermatrix@i*{\@ifnextchar[{\@bordermatrix@ii}{\
-    @bordermatrix@ii[()]}}
-  \def\@bordermatrix@ii[#1]#2{%
-   \begingroup
-   \m@th\@tempdima8.75\p@\setbox\z@\vbox{%
- \def\cr{\crcr\noalign{\kern 2\p@\global\let\cr\endline }}%
- \ialign {$##$\hfil\kern 2\p@\kern\@tempdima & \thinspace %
- \hfil $##$\hfil && \quad\hfil $##$\hfil\crcr\omit\strut %
- \hfil\crcr\noalign{\kern -\baselineskip}#2\crcr\omit %
- \strut\cr}}%
-\setbox\tw@\vbox{\unvcopy\z@\global\setbox\@ne\lastbox}%
- \setbox\tw@\hbox{\unhbox\@ne\unskip\global\setbox\@ne\lastbox}%
- \setbox\tw@\hbox{%
-$\kern\wd\@ne\kern -\@tempdima\left\@firstoftwo#1%
- \if@borderstar\kern2pt\else\kern -\wd\@ne\fi%
-\global\setbox\@ne\vbox{\box\@ne\if@borderstar\else\kern 2\p@\fi}%
- \vcenter{\if@borderstar\else\kern -\ht\@ne\fi%
-\unvbox\z@\kern-\if@borderstar2\fi\baselineskip}%
- \if@borderstar\kern-2\@tempdima\kern2\p@\else\,\fi\right\@secondoftwo#1 $%
- }\null \;\vbox{\kern\ht\@ne\box\tw@}%
-\endgroup }
-\makeatother
-
-\newcommand{\idx}[1]{\text{\tiny{$#1$}}}
+\newcommand{\Range}{\mathop{\text{Range}}}

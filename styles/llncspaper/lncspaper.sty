@@ -1,36 +1,20 @@
 \ProvidesPackage{lncspaper}
-
-% -- REVISION NUMBER --
-%\immediate\write18{sh ./vc -m}
-%\input{vc}
-
-\usepackage{gitinfo}
-
-\usepackage{url}
-
-%%
-%% Bibliographical References Style
-%%
-\usepackage{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
-\setlength{\bibhang}{0pt}
-\setlength{\bibsep}{.45em}
-
-% Hyperlink DOIs in the bibliography.
-\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
+%
+% Import definitions common to all styles.
+%
+\usepackage{latex_styles_common}
+%
+% Definitions specific to llncspaper.
+%
 \newcommand*{\URL}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
-
-% make a proper TOC despite llncs
+%
+% Make a proper TOC.
+%
 \setcounter{tocdepth}{2}
 \makeatletter
 \renewcommand*\l@author[2]{}
 \renewcommand*\l@title[2]{}
 \renewcommand{\chapter}{\section}
-
-\def\cahierline{\gdef\@cahierline}
-\cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
-\def\gitline{\gdef\@gitline}
-\gitline{\textcolor{gray}{Commit \gitAbbrevHash\ by \gitAuthorName\ on \gitAuthorIsoDate}}
 
 \def\ps@mytitlepage{\let\@mkboth\@gobbletwo
    \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
@@ -55,24 +39,7 @@
    \def\subsectionmark##1{}}
 \makeatother
 
-\usepackage{subdepth}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage[svgnames]{xcolor}
 \usepackage{pgfplots}
-\usepackage{listings}
-\usepackage{xspace}
-\usepackage[colorlinks,breaklinks,citecolor={DarkBlue},urlcolor={blue},linkcolor={DarkBlue}]{hyperref}
-
-% \usepackage{emp}
-%
-% \ifx\pdftexversion\undefined
-% \usepackage[dvips]{graphicx}
-% \else
-% \usepackage[pdftex]{graphicx}
-% \DeclareGraphicsRule{*}{mps}{*}{}
-% \fi
-
 % Moves axis labels near ticklabels (respects tick label widths).
 \pgfplotsset{compat=1.3}
 \pgfplotsset{
@@ -82,13 +49,10 @@
   legend style={font=\scriptsize}
 }
 
-\newcommand{\http}[1]{\href{http://#1}{\texttt{#1}}}
-\newcommand{\https}[1]{\href{https://#1}{\texttt{#1}}}
-\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
-
 % Declare bold typewriter font with Computer Modern
 \DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
 
+\usepackage{listings}
 \lstloadlanguages{Python, C++}
 \definecolor{LightYellow}{rgb}{1.0,1.0,0.90}
 \definecolor{DimGray}{rgb}{0.412,0.412,0.412}
@@ -115,44 +79,19 @@
   morekeywords={super,None},
 }
 
-\usepackage{float}
 \usepackage{enumerate}
-
-\floatstyle{ruled}
-
-\newfloat{floatingAlgorithm}{htbp}{loa}[section]
-\floatname{floatingAlgorithm}{Algorithm}
-\newcounter{floatingAlgoStep}
-\renewcommand{\thefloatingAlgoStep}{Step~\arabic{floatingAlgoStep}}
-
-\newenvironment{floatingAlgoDescription}[1]{
-\begin{center}
-	\begin{list}{
-          {\bf \thefloatingAlgoStep.}
-         }{
-         \usecounter{floatingAlgoStep}
-         }
-
-         \setcounter{floatingAlgoStep}{-1}
-         \setlength{\itemsep}{.5em}
-         #1
-    \end{list}
-\end{center}
-}
-
-% To-do notes.
-\usepackage[textwidth=.8\marginparwidth,
-  backgroundcolor=yellow,
-  linecolor=orange,
-  textsize=scriptsize]{todonotes}
 
 \newcommand{\Class}[1]{\texttt{#1}}
 \newcommand{\Method}[1]{\texttt{#1()}}
 \newcommand{\Attribute}[1]{\texttt{#1}}
 
-\usepackage{tikz}
-
 \usepackage[
 % school,
 % simplified
 ]{pgf-umlcd}
+%
+% Operators.
+%
+\newcommand{\diag}{\mathop{\text{diag}}}
+\newcommand{\rank}{\mathop{\text{rank}}}
+\newcommand{\Range}{\mathop{\text{Range}}}

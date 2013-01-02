@@ -1,0 +1,175 @@
+% Common definitions for all latex-styles.
+
+% -- REVISION NUMBER --
+\usepackage{gitinfo}
+
+\makeatletter
+%
+% Tech report number to go at top of first page.
+%
+\def\cahierline{\gdef\@cahierline}
+\cahierline{Cahier du GERAD G-\number\year-\cahiernumber}
+%
+% Git info line.
+%
+\def\gitline{\gdef\@gitline}
+\gitline{\textcolor{gray}{Commit \gitAbbrevHash\ by \gitAuthorName\ on \gitAuthorIsoDate}}
+\makeatother
+%
+% Useful general packages.
+%
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{subdepth}  % Equalize depth of subscripts. Amazing!
+\usepackage{xspace}
+\usepackage{boxedminipage}
+\usepackage[svgnames]{xcolor}
+\usepackage{graphicx}
+%
+% Bibliography style.
+%
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+%
+% Show equations labels in margin.
+%
+\usepackage[notref,notcite,color]{showkeys}
+\renewcommand\showkeyslabelformat[1]{%
+  \normalfont\scriptsize\ttfamily#1}
+%
+% TikZ library.
+%
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+%
+% To-do notes.
+%
+\usepackage[textwidth=.8\marginparwidth,
+  backgroundcolor=lightgray,
+  linecolor=orange,
+  textsize=scriptsize]{todonotes}
+
+\newcommand{\smarttodo}[2][]{%
+  \todo[caption={\protect\hypertarget{todo}{} #2}, #1]{\hyperlink{todo}{#2}
+}}
+%
+% Algorithms.
+%
+\usepackage{algorithmicx}
+\usepackage[section]{algorithm}
+\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{// \textit{#1}}}
+%
+% Hyperlinks.
+%
+\usepackage{hyperref}
+\hypersetup{
+  breaklinks,
+  colorlinks,
+  citecolor={DarkBlue},
+  urlcolor={DarkBlue},
+  linkcolor={DarkBlue}
+}
+%
+% Hyperlink DOIs and URLs in the bibliography.
+%
+\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
+%
+% Useful shortcuts for hyperlinks.
+%
+\newcommand{\http}[1]{\href{http://#1}{\texttt{\nolinkurl{#1}}}}
+\newcommand{\ftp}[1]{\href{ftp://#1}{\texttt{#1}}}
+\newcommand{\https}[1]{\href{https://#1}{\texttt{#1}}}
+\newcommand{\sftp}[1]{\href{sftp://#1}{\texttt{#1}}}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+%
+% Optitmization "operators".
+%
+\newcommand{\minim}{\mathop{\textup{minimize}}}
+\newcommand{\minimize}[1]{\displaystyle\minim_{#1}}
+\newcommand{\argminim}{\mathop{\textup{arg min}}}
+\newcommand{\argmin}[1]{\displaystyle\argminim_{#1}}
+\newcommand{\maxim}{\mathop{\textup{maximize}}}
+\newcommand{\maximize}[1]{\displaystyle\maxim_{#1}}
+\newcommand{\argmaxim}{\mathop{\textup{arg max}}}
+\newcommand{\argmax}[1]{\displaystyle\argmaxim_{#1}}
+\newcommand{\st}{\mathop{\textup{subject to}}}
+%
+% Linear algebra "operators"
+%
+\newcommand{\nnz}{\mathop{\text{nnz}}}
+\newcommand{\blkdiag}{\mathop{\text{blkdiag}}}
+\newcommand{\Null}{\mathop{\text{Null}}}
+\newcommand{\Span}{\mathop{\text{Span}}}
+\newcommand{\cond}{\mathop{\text{cond}}}
+\newcommand{\trace}{\mathop{\text{trace}}}
+\newcommand{\dtm}{\mathop{\text{det}}}
+\newcommand{\band}{\mathop{\text{band}}}
+\newcommand{\tr}{\mathop{\text{tr}}}
+\renewcommand{\vec}{\mathop{\textbf{vec}}}
+%
+% Boxed environments.
+%
+\newenvironment{btheorem}{%
+   \setlength{\fboxsep}{8pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{theorem}}
+    {\end{theorem}
+    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%
+\newenvironment{bcorollary}{%
+   \setlength{\fboxsep}{8pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{corollary}}
+    {\end{corollary}
+    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%
+\newenvironment{blemma}{%
+   \setlength{\fboxsep}{8pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{lemma}}
+    {\end{lemma}
+    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%
+% Bordered matrices.
+%
+\makeatletter
+  \newif\if@borderstar
+  \def\bordermatrix{\@ifnextchar*{%
+    \@borderstartrue\@bordermatrix@i}{\@borderstarfalse\@bordermatrix@i *}%
+  }
+  \def\@bordermatrix@i*{\@ifnextchar[{\@bordermatrix@ii}{\
+    @bordermatrix@ii[()]}}
+  \def\@bordermatrix@ii[#1]#2{%
+   \begingroup
+   \m@th\@tempdima8.75\p@\setbox\z@\vbox{%
+ \def\cr{\crcr\noalign{\kern 2\p@\global\let\cr\endline }}%
+ \ialign {$##$\hfil\kern 2\p@\kern\@tempdima & \thinspace %
+ \hfil $##$\hfil && \quad\hfil $##$\hfil\crcr\omit\strut %
+ \hfil\crcr\noalign{\kern -\baselineskip}#2\crcr\omit %
+ \strut\cr}}%
+\setbox\tw@\vbox{\unvcopy\z@\global\setbox\@ne\lastbox}%
+ \setbox\tw@\hbox{\unhbox\@ne\unskip\global\setbox\@ne\lastbox}%
+ \setbox\tw@\hbox{%
+$\kern\wd\@ne\kern -\@tempdima\left\@firstoftwo#1%
+ \if@borderstar\kern2pt\else\kern -\wd\@ne\fi%
+\global\setbox\@ne\vbox{\box\@ne\if@borderstar\else\kern 2\p@\fi}%
+ \vcenter{\if@borderstar\else\kern -\ht\@ne\fi%
+\unvbox\z@\kern-\if@borderstar2\fi\baselineskip}%
+ \if@borderstar\kern-2\@tempdima\kern2\p@\else\,\fi\right\@secondoftwo#1 $%
+ }\null \;\vbox{\kern\ht\@ne\box\tw@}%
+\endgroup }
+\makeatother
+\newcommand{\idx}[1]{\text{\tiny{$#1$}}}
+%
+% Double-stroke symbols for number sets.
+%
+\usepackage{dsfont}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\C}{\mathds{C}}
