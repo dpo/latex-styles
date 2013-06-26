@@ -47,9 +47,9 @@ cd $papername
 
 # Initialize git.
 git init
-cp $LATEX_STYLES/share/post-xxx-sample.txt ./.git/hooks/post-checkout
-cp $LATEX_STYLES/share/post-xxx-sample.txt ./.git/hooks/post-commit
-cp $LATEX_STYLES/share/post-xxx-sample.txt ./.git/hooks/post-merge
+cp $LATEX_STYLES/hooks/post-checkout ./.git/hooks/post-checkout
+cp $LATEX_STYLES/hooks/post-commit   ./.git/hooks/post-commit
+cp $LATEX_STYLES/hooks/post-merge    ./.git/hooks/post-merge
 chmod +x ./.git/hooks/post-checkout ./.git/hooks/post-commit ./.git/hooks/post-merge
 git add paper code talk .gitignore
 git commit -m 'Initial commit.'
