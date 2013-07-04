@@ -43,6 +43,7 @@ mkdir $code
 mkdir $talk
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
 cp $LATEX_STYLES/share/gitignore ./$papername/.gitignore
+cp $LATEX_STYLES/share/README.md ./$papername/README.md
 cd $papername
 
 # Initialize git.
@@ -51,5 +52,5 @@ cp $LATEX_STYLES/hooks/post-checkout ./.git/hooks/post-checkout
 cp $LATEX_STYLES/hooks/post-commit   ./.git/hooks/post-commit
 cp $LATEX_STYLES/hooks/post-merge    ./.git/hooks/post-merge
 chmod +x ./.git/hooks/post-checkout ./.git/hooks/post-commit ./.git/hooks/post-merge
-git add paper code talk .gitignore
+git add paper code talk .gitignore README.md
 git commit -m 'Initial commit.'
