@@ -33,8 +33,8 @@
    \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
    \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
    \def\@evenhead{\normalfont\small\rlap{\thepage}\hspace{\headlineindent}%
-                  \leftmark\hfil}
-   \def\@oddhead{\normalfont\small\hfil\rightmark\hspace{\headlineindent}%
+    \leftmark\hfil\scshape\hyperlink{contents}{[toc]}}
+    \def\@oddhead{\normalfont\small\scshape\hyperlink{contents}{[toc]}\hfil\rightmark\hspace{\headlineindent}%
                  \llap{\thepage}}
    \def\chaptermark##1{}%
    \def\sectionmark##1{}%
