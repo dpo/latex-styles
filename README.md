@@ -59,3 +59,7 @@ Some choices have been made that may not be to everybody's taste but that fits
 my needs and preferences best. Among them:
 
 * the bibliography style is always ``natbib``'s ``plainnat`` author-year style.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpo/latex-styles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
