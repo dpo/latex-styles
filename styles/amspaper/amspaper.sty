@@ -2,6 +2,7 @@
 % Import definitions common to all styles.
 %
 \usepackage{latex_styles_common}
+\usepackage{styled_theorems}
 %
 % Definitions specific to amspaper.
 %
@@ -53,15 +54,11 @@
 \def\l@algorithm{\@tocline{0}{3pt plus2pt}{0pt}{1.9em}{}}
 \makeatother
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}{Example}
+\newtheorem{conjecture}{Conjecture}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remark}{Remark}
 
 \numberwithin{equation}{section}
 %

@@ -1,0 +1,28 @@
+%
+% Styled theorem environments.
+%
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{mdframed}        % Shaded theorems etc. across page breaks
+\definecolor{gray093}{rgb}{0.93,0.93,0.93}
+\declaretheoremstyle[
+  headindent=0pt,
+  headfont=\normalfont\bfseries,
+  notefont=\mdseries,
+  notebraces={(}{)},
+  bodyfont=\normalfont\itshape,
+  postheadspace=0.5em,
+  mdframed={%
+      backgroundcolor=gray093,%
+      innertopmargin=0pt, innerbottommargin=6pt,%
+      splittopskip=\topskip,%
+      skipbelow=\topsep, skipabove=\topsep,%
+      hidealllines=true%
+  },
+]{theoremstyle}
+
+\declaretheorem[style=theoremstyle,numberwithin=section]{theorem}
+\declaretheorem[style=theoremstyle,numberwithin=section]{lemma}
+\declaretheorem[style=theoremstyle,numberwithin=section]{proposition}
+\declaretheorem[style=theoremstyle,numberwithin=section]{corollary}
+\declaretheorem[style=theoremstyle,numberwithin=section]{definition}
