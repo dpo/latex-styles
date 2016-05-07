@@ -71,3 +71,12 @@
 \newtheorem{example}{Example}[section]
 \newtheorem{remark}{Remark}
 \newtheorem{assumption}{Assumption}[section]
+
+%
+\newenvironment{bassumption}{%
+   \setlength{\fboxsep}{6pt}%
+   \par\hbox{}\noindent%
+   \begin{boxedminipage}{\textwidth}
+     \begin{assumption}}
+    {\end{assumption}
+    \end{boxedminipage}\vspace{0.5\baselineskip}}
