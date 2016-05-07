@@ -24,7 +24,6 @@
 \usepackage{subdepth}  % Equalize depth of subscripts. Amazing!
 \usepackage{xspace}
 \usepackage{boxedminipage}
-\usepackage[svgnames,table]{xcolor}
 \usepackage{graphicx}
 %
 % Bibliography style.
@@ -32,18 +31,10 @@
 \usepackage[longnamesfirst]{natbib}
 \bibpunct{(}{)}{;}{a}{,}{,}
 %
-% Show equations labels in margin.
-%
-\usepackage[right,marginal]{showlabels}
-\renewcommand{\showlabelfont}{\normalfont\scriptsize\ttfamily\color{gray}}
-\showlabels{bibitem}
-% \usepackage[notref,notcite,color]{showkeys}
-% \renewcommand\showkeyslabelformat[1]{%
-%   \normalfont\scriptsize\ttfamily#1}
-\usepackage[left,pagewise,mathlines]{lineno}
+\usepackage[notref,notcite,color]{showkeys}
+\renewcommand\showkeyslabelformat[1]{%
+  \normalfont\scriptsize\ttfamily#1}
 \setlength\linenumbersep{1.5cm}
-\renewcommand\linenumberfont{\normalfont\ttfamily\tiny}
-\renewcommand\thelinenumber{\textcolor{gray}{\arabic{linenumber}}}
 
 % Patch to insert bib labels in the right instead of left margin.
 % \newcommand{\fullrlap}[1]{%
@@ -69,25 +60,6 @@
 \newcommand{\smarttodo}[2][]{%
   \todo[caption={\protect\hypertarget{todo}{} #2}, #1]{\hyperlink{todo}{#2}
 }}
-%
-% Algorithms.
-%
-\usepackage{algorithmicx}
-\usepackage[section]{algorithm}
-\usepackage[noend]{algpseudocode}
-\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{// \textit{#1}}}
-%
-% Hyperlinks.
-%
-\usepackage{nameref}
-\usepackage{hyperref}
-\hypersetup{
-  breaklinks,
-  colorlinks,
-  citecolor={DarkBlue},
-  urlcolor={DarkBlue},
-  linkcolor={DarkBlue}
-}
 %
 % Hyperlink DOIs and URLs in the bibliography.
 %

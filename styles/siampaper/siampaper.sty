@@ -48,7 +48,7 @@
 % Let's fix that.
 \makeatletter
 \setcounter{tocdepth}{3}
-\newcommand\tableofcontents{%
+\renewcommand\tableofcontents{%
   \section*{\contentsname}\mbox{~}\par
     \@starttoc{toc}
     }
@@ -62,7 +62,7 @@
   \setcounter{subsection}{0}%
   \renewcommand\thesection{\Alph{section}}}
 
-\renewcommand\Appendix{%
+\newcommand\Appendix{%
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%
   \renewcommand\thesection{\Alph{section}}}
