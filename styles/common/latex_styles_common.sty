@@ -25,16 +25,14 @@
 \usepackage{xspace}
 \usepackage{boxedminipage}
 \usepackage{graphicx}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{// \textit{#1}}}
 %
 % Bibliography style.
 %
 \usepackage[longnamesfirst]{natbib}
 \bibpunct{(}{)}{;}{a}{,}{,}
-%
-\usepackage[notref,notcite,color]{showkeys}
-\renewcommand\showkeyslabelformat[1]{%
-  \normalfont\scriptsize\ttfamily#1}
-\setlength\linenumbersep{1.5cm}
 
 % Patch to insert bib labels in the right instead of left margin.
 % \newcommand{\fullrlap}[1]{%
@@ -96,7 +94,7 @@
 \newcommand{\dtm}{\mathop{\mathrm{det}}}
 \newcommand{\band}{\mathop{\mathrm{band}}}
 \newcommand{\tr}{\mathop{\mathrm{tr}}}
-\newcommand{\diag}{\mathop{\text{diag}}}
+% \newcommand{\diag}{\mathop{\text{diag}}}
 \newcommand{\rank}{\mathop{\text{rank}}}
 %\renewcommand{\vec}{\mathop{\textbf{vec}}}
 %
