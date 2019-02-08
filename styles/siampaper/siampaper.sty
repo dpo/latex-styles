@@ -69,6 +69,44 @@
   \renewcommand\thesection{\Alph{section}}}
 \makeatother
 
+\usepackage[ntheorem]{mdframed}
+\newmdtheoremenv[
+  hidealllines=true,%
+  backgroundcolor=gray!10,%
+  skipabove=6pt,%
+  skipbelow=6pt,%
+  innertopmargin=2pt,%
+  innerbottommargin=2pt,%
+  ntheorem=true,%
+]{shadyproposition}{Proposition}
+\newmdtheoremenv[
+  hidealllines=true,%
+  backgroundcolor=gray!10,%
+  skipabove=6pt,%
+  skipbelow=6pt,%
+  innertopmargin=2pt,%
+  innerbottommargin=2pt,%
+  ntheorem=true,%
+]{shadytheorem}{Theorem}
+\newmdtheoremenv[
+  hidealllines=true,%
+  backgroundcolor=gray!10,%
+  skipabove=6pt,%
+  skipbelow=6pt,%
+  innertopmargin=2pt,%
+  innerbottommargin=2pt,%
+  ntheorem=true,%
+]{shadycorollary}{Corollary}
+\newmdtheoremenv[
+  hidealllines=true,%
+  backgroundcolor=gray!10,%
+  skipabove=6pt,%
+  skipbelow=6pt,%
+  innertopmargin=2pt,%
+  innerbottommargin=2pt,%
+  ntheorem=true,%
+]{shadylemma}{Lemma}
+
 \newtheorem{example}{Example}[section]
 \newtheorem{remark}{Remark}
 \newtheorem{assumption}{Assumption}[section]
