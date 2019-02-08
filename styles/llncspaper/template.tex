@@ -1,6 +1,13 @@
-\documentclass[runningheads,orivec]{llncs}
+\documentclass[runningheads,orivec,oribibl]{llncs}
 
 \usepackage{lncspaper}
+
+\spnewtheorem{assumption}{Assumption}{\bfseries}{\itshape}
+\def\algorithmautorefname{Algorithm}
+\def\assumptionautorefname{Assumption}
+
+% A draft watermark is nice while the paper is in preparation
+% but it interferes with syncTeX
 \usepackage{draftwatermark}
 \SetWatermarkScale{8}
 \SetWatermarkLightness{.97}
@@ -15,7 +22,11 @@
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
 %% for the whole article with \linenumbers after \end{frontmatter}.
-%% \usepackage{lineno}
+\usepackage{lineno}
+\renewcommand{\linenumbersep}{40pt}
+
+\usepackage[right,marginal]{showlabels}
+\renewcommand{\showlabelfont}{\normalfont\scriptsize\color{gray}}
 
 % For final version.
 %\usepackage{butterma}
@@ -26,10 +37,10 @@
 %\usepackage[figuresright]{rotating}
 
 \title{%
-  Insert Title Here
+  Your Title Should Be Short and to the Point
 }
 \titlerunning{%
-  Insert Running Title (will appear in header)
+  Short and to the Point  % will appear in header
 }
 \author{
   Dominique Orban\inst{1,2}%
@@ -64,10 +75,14 @@
 %\thispagestyle{electronic}   % Published version.
 
 \begin{abstract}
-  Abstract goes here.
+  The abstract is reserved to an expert audience.
+  It should clearly state what types of problems you consider, what your method is, and why it is novel.
+  The abstract should also summarize your main theoretical results, say a few words about implementation, and sum up your findings from numerical experiments.
+  The abstract should be written last.
+  \smarttodo{write abstract}
 \end{abstract}
 
-\keywords{Keywords go here}
+\keywords{Keyword1, keyword2, keyword3}
 
 % Pour le cahier du GERAD.
 %\begin{resume}
@@ -75,36 +90,120 @@
 %\end{resume}
 %\textbf{Mots cl\'es :}
 
-%%
-%% Start line numbering here if you want
-%%
-%\linenumbers
-
-\listoftodos
+%========================================================================
 
 \section{Introduction}
 \label{sec:introduction}
 
-This is the introduction.
+We consider the problem
+\begin{equation}
+  \label{eq:unc}
+  \minimize{x \in \R^n} \ f(x),
+\end{equation}
+where \(f : \R^n \to \R\) is continuously differentiable.
 
-You can show code samples as in Listing~\ref{lst:somelisting}.
+\subsection*{Related Research}
 
-\begin{lstlisting}[%float,
-                   label={lst:somelisting},
-                   caption={Some Listing.}]
-import numpy as np
-x = np.zeros(100)
-\end{lstlisting}
+Cite the most relevant references, summarize what their approach and contributions are, and indicate how your method differs.
+
+\subsection*{Notation}
+
+We use Householder notation throughout: capital Latin letters such as \(A\), \(B\), and \(H\), represent matrices, lowercase Latin letters such as \(s\), \(x\), and \(y\) represent vectors in \(\R^n\), and lowercase greek letter such as \(\alpha\), \(\beta\) and \(\gamma\) represent scalars.
+
+%========================================================================
+
+%% this structure is only an example
+
+\section{Background and Assumptions}
+\label{sec:background}
+
+\begin{assumption}
+  \label{ass:f-C1}
+  The function \(f\) is continuously differentiable over \(\R^n\).
+\end{assumption}
+
+%========================================================================
+
+\section{Complete Algorithm}
+\label{sec:algorithm}
+
+We summarize the complete process as \autoref{alg:name-of-your-algorithm}.
+
+\begin{algorithm}[t]
+  \caption{Give a short name or description of the algorithm}
+  \label{alg:name-of-your-algorithm}
+  \begin{algorithmic}[1]
+    \Require \(x_0 \in \R^n\)
+
+    \State choose \(\epsilon > 0\), set \(k = 0\)
+      \Comment{change as necessary}
+
+    \For{$k = 1, 2, \ldots$}
+
+      \State
+
+      \State
+
+    \EndFor
+  \end{algorithmic}
+\end{algorithm}
+
+%========================================================================
+
+\section{Convergence Analysis}
+\label{sec:convergence}
+
+\begin{lemma}
+  Lemmas are used for preliminary results.
+\end{lemma}
+
+\begin{proposition}
+  A proposition is an important result established by someone else.
+\end{proposition}
+
+\begin{theorem}
+  Theorems are used to emphasize important results that you established, and distinguish them from the results in Propositions.
+
+  Let \autoref{ass:f-C1} be satisfied.
+  Then \(\dots\)
+\end{theorem}
+
+\begin{proof}
+  Here is the proof.
+  \qed
+\end{proof}
+
+%========================================================================
+
+\section{Implementation and Numerical Results}
+\label{sec:implementation}
+
+\begin{itemize}
+  \item describe implementation;
+  \item brief explanation of the packages used;
+  \item values of algorithmic parameters, choice of accuracy tolerances, stopping conditions, etc.;
+  \item description and size of test problems;
+  \item etc.
+\end{itemize}
+
+%========================================================================
 
 \section{Discussion}
 \label{sec:discussion}
 
 A discussion is better than conclusions.
+Contrast your finding with those from the literature and justify the statements you made in the abstract and introduction.
+Finish with a brief statement of future work.
 
 %========================================================================
-%========================================================================
+
 \section{Notes}
 \label{sec:notes}
+
+You can keep notes in this section and remove the section altogether when you are ready to submit.
+
+Using Natbib with author-year style, you can work citations into your sentences.
+For example, \cite{wright-orban-2002} study the existence of the central path under the Mangasarian-Fromovitz constraint qualification.
 
 %========================================================================
 
@@ -116,7 +215,20 @@ A discussion is better than conclusions.
 %% \label{}
 
 %% References
-%%
+%% We use Natbib, which is accepted by SIAM and Springer journals
+%% see the cheat sheet: http://merkel.texture.rocks/Latex/natbib.php
+
+% \cite is the same as \citet
+% \citet{jon90}	                  -->    	Jones et al. (1990)
+% \citet[chap. 2]{jon90}	        -->    	Jones et al. (1990, chap. 2)
+% \citep{jon90}	                  -->    	(Jones et al., 1990)
+% \citep[chap. 2]{jon90}	        -->    	(Jones et al., 1990, chap. 2)
+% \citep[see][]{jon90}	          -->    	(see Jones et al., 1990)
+% \citep[see][chap. 2]{jon90}	    -->    	(see Jones et al., 1990, chap. 2)
+% \citet*{jon90}	                -->    	Jones, Baker, and Williams (1990)
+% \citep*{jon90}	                -->    	(Jones, Baker, and Williams, 1990)
+
+
 %% Following citation commands can be used in the body text:
 %% Usage of \cite is as follows:
 %%   \cite{key}         ==>>  [#]
@@ -124,8 +236,16 @@ A discussion is better than conclusions.
 %%
 
 %% References with BibTeX database:
+% - each reference should have a DOI
+% - use the strings provided for the journal name
 
-\bibliographystyle{plainnat}
+\bibliographystyle{abbrvnat}
 \bibliography{test}
+
+\newpage
+
+\hypertarget{contents}{}  % so clicking on [toc] in the header leads here
+\tableofcontents
+\listoftodos
 
 \end{document}
