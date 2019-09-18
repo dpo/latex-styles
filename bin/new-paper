@@ -42,7 +42,8 @@ mkdir $paper
 mkdir $code
 mkdir $talk
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
-cp $styleshome/share/template.bib ./$papername/$papername.bib
+cp $LATEX_STYLES/share/abbrv.bib ./$paper/abbrv.bib
+cp $LATEX_STYLES/share/template.bib ./$paper/$papername.bib
 cp $LATEX_STYLES/share/gitignore ./$papername/.gitignore
 cp $LATEX_STYLES/share/README.md ./$papername/README.md
 cd $papername
