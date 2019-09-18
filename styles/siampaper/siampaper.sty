@@ -58,15 +58,15 @@
 \newcommand*\l@subsubsection{\@dottedtocline{3}{.35in}{3.2em}}
 \newcommand*\l@paragraph{\@dottedtocline{4}{.4in}{4.1em}}
 \newcommand*\l@subparagraph{\@dottedtocline{5}{.45in}{5em}}
-\renewcommand\appendix{%
-  \setcounter{section}{0}%
-  \setcounter{subsection}{0}%
-  \renewcommand\thesection{\Alph{section}}}
+% \renewcommand\appendix{%
+%   \setcounter{section}{0}%
+%   \setcounter{subsection}{0}%
+%   \renewcommand\thesection{\Alph{section}}}
 
-\newcommand\Appendix{%
-  \setcounter{section}{0}%
-  \setcounter{subsection}{0}%
-  \renewcommand\thesection{\Alph{section}}}
+% \newcommand\Appendix{%
+%   \setcounter{section}{0}%
+%   \setcounter{subsection}{0}%
+%   \renewcommand\thesection{\Alph{section}}}
 \makeatother
 
 \usepackage[ntheorem]{mdframed}
@@ -110,7 +110,7 @@
 \newtheorem{example}{Example}[section]
 \newtheorem{remark}{Remark}
 \newtheorem{assumption}{Assumption}[section]
-
+% \crefname{assumption}{Assumption}{Assumptions}
 %
 \newenvironment{bassumption}{%
    \setlength{\fboxsep}{6pt}%
