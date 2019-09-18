@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools,bbm}
+\usepackage[hidelinks]{hyperref}
+\usepackage[svgnames]{xcolor}
+\usepackage{enumitem}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{mdframed}
+
+\newmdenv[
+  linecolor=black,
+  topline=false,bottomline=false,rightline=true,
+  linewidth=2pt,
+  backgroundcolor=gray!10!white
+]{answer}
+
+\usepackage[textwidth=.95\marginparwidth,
+  backgroundcolor=lightgray,
+  linecolor=orange,
+  textsize=scriptsize]{todonotes}
+  
+\makeatletter
+\@mparswitchfalse  % Place todo notes in wide margin.
+\def\listtodoname{Todo List}
+\def\listoftodos{%
+  \section*{\listtodoname}\mbox{~}\par
+  \@starttoc{tdo}
+  }
+\makeatother
+
+\newcommand{\smarttodo}[2][]{%
+  \todo[caption={\protect\hypertarget{todo}{} #2}, #1]{\hyperlink{todo}{#2}
+}}
+
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
+\renewcommand*{\url}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
+
+\begin{document}
+
+\begin{center} \Large
+   Title line 1
+\\ Title line 2
+\\[6pt] \large Author1, Author2
+\\[6pt] \today
+\\[12pt]\Large \bf Response to reviewers
+\end{center}
+
+\noindent We thank the reviewers for their careful reading of our manuscript and their insightful and constructive comments. We followed the suggestions in almost every instance. Our responses are summarized below.
+
+\section*{Reviewer 1 comments}
+
+\begin{enumerate}[label={\color{black}R1.\arabic*}]
+  \item \label{R1:comment1} Referee comment.
+
+  \begin{answer}
+    Our answer.
+  \end{answer}
+
+  \item Referee comment.
+
+  \begin{answer}
+    Our answer can refer to~\ref{R1:comment1}.
+  \end{answer}
+  
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Reviewer 2 comments}
+
+\begin{enumerate}[label={\color{black}R2.\arabic*}]
+
+  \item \label{R2:comment1} Referee comment.
+
+  \begin{answer}
+    Our answer.
+  \end{answer}
+
+  \item Referee comment.
+
+  \begin{answer}
+    Our answer can refer to~\ref{R2:comment1}.
+  \end{answer}
+
+\end{enumerate}
+
+\frenchspacing
+\bibliographystyle{abbrvnat}
+\bibliography{abbrv}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
