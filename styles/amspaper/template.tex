@@ -1,6 +1,9 @@
 \documentclass{amsart}
 
 \usepackage{amspaper}
+
+% A draft watermark is nice while the paper is in preparation
+% but it interferes with syncTeX
 \usepackage{draftwatermark}
 \SetWatermarkScale{8}
 \SetWatermarkLightness{.97}
@@ -11,11 +14,6 @@
 
 % For debugging.
 %\usepackage{showframe}
-
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers after \end{frontmatter}.
-%% \usepackage{lineno}
 
 % Meta-information for the PDF file generated.
 \pdfinfo{/Author (Dominique Orban)
@@ -49,7 +47,23 @@
 \email{\mailto{dominique.orban@gerad.ca}}
 \thanks{Research partially supported by NSERC Discovery Grant 299010-04}
 
-\subjclass[2010]{90C06, 90C20, 90C30, 90C51, 90C53, 90C55, 65F10, 65F50}
+% see https://mathscinet.ams.org/msc/msc2010.html
+\subjclass[2010]{
+  15A06,  % Linear equations
+  65F10,  % Iterative methods for linear systems
+  65F20,  % Overdetermined systems, pseudoinverses
+  65F22,  % Ill-posedness, regularization
+  65F25,  % Orthogonalization
+  65F35,  % Matrix norms, conditioning, scaling
+  65F50,  % Sparse matrices
+  93E24   % Least squares and related methods
+  90C06,  % Large-scale problems
+  90C20,  % Quadratic programming
+  90C30,  % Nonlinear programming
+  90C51,  % Interior-point methods
+  90C53,  % Methods of quasi-Newton type
+  90C55   % Methods of successive quadratic programming type
+}
 
 \keywords{%
   Keyword, keyword, keyword.
@@ -70,41 +84,18 @@
 
 \section{Introduction}
 
-\subsection{Related Work}
+Consider
+\begin{equation}
+  \label{eq:nlp}
+  \minimize{x \in  \R^n} \ f(x)
+\end{equation}
 
-\subsection{Notation}
+\subsection*{Related Work}
+
+\subsection*{Notation}
 
 
 \section{Main Stuff}
-
-\begin{blemma}
-  \label{lem:eigs-RW}
-  If $Q$ is positive definite,
-  $A$ has full row rank and $X$ and $Z$ are positive definite,
-  then
-  \begin{align*}
-    \lambda^+ & \geq \lambda_{\min}(Q), \\
-    \lambda^+ & \leq
-      \tfrac{1}{2}
-      \left(
-        \lambda_{\max}(Q) + \sqrt{\lambda_{\max}(Q)^2 + 4 \sigma_1^2}
-      \right)
-  \end{align*}
-  for any positive eigenvalue $\lambda^+$ of $K_2$, and
-  \begin{align*}
-    \lambda^- & \geq
-      \tfrac{1}{2}
-      \left(
-        \lambda_{\min}(Q) - \sqrt{\lambda_{\min}(Q)^2 + 4 \sigma_1^2}
-      \right), \\
-    \lambda^- & \leq
-      \tfrac{1}{2}
-      \left(
-        \lambda_{\max}(Q) - \sqrt{\lambda_{\max}(Q)^2 + 4 \sigma_m^2}
-      \right)
-  \end{align*}
-  for any negative eigenvalue $\lambda^-$ of $K_2$.
-\end{blemma}
 
 \section{Conclusion}
 
