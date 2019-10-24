@@ -11,5 +11,7 @@
 *.log
 *.out
 *.rel
+*.fls
 *.synctex.gz
+*-eps-converted-to.pdf
 vc.tex
