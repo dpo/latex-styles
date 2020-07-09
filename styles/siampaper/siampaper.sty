@@ -20,8 +20,8 @@
 }
 
 \def\ps@myheadings{%
-    \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
-    \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
+    \def\@oddfoot{\normalfont\scriptsize\ttfamily\@cahierline\hfil\@gitline}
+    \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil\@cahierline}
     \def\@evenhead{\rlap{\thepage}\hfil\upshape\footnotesize\leftmark\hfil\scshape\hyperlink{contents}{[toc]}}%          %!
     \def\@oddhead{\footnotesize\scshape\hyperlink{contents}{[toc]}\hfil{\upshape\footnotesize\rightmark}\hfil\llap{\thepage}}% %!
     \let\@mkboth\@gobbletwo
@@ -44,6 +44,7 @@
   }
 \def\l@algorithm{\@dottedtocline{1}{.25in}{1.8em}}
 \makeatother
+\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\textit{#1}}}
 
 % The SIAM style doesn't seem to let us display a table of contents...
 % Let's fix that.
