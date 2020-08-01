@@ -1,5 +1,5 @@
 %% File: `abbrvnat.bst'
-%% A modification of `abbrv.bst' for use with natbib package 
+%% A modification of `abbrv.bst' for use with natbib package
 %%
 %% Copyright 1993-2007 Patrick W Daly
 %% Max-Planck-Institut f\"ur Sonnensystemforschung
@@ -290,16 +290,21 @@ FUNCTION {format.url}
 }
 
 FUNCTION {format.doi}
-{ doi empty$
-    { "" }
-    { new.block "\doi{" doi * "}" * }
-  if$
-}
+{ "" }
+% { doi empty$
+%     { "" }
+%     { new.block "\doi{" doi * "}" * }
+%   if$
+% }
 
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ }
+    { doi empty$
+        { title "t" change.case$ }
+        { "\doilink{" doi * "}{" * title "t" change.case$ * "}" * }
+      if$
+    }
   if$
 }
 
@@ -430,7 +435,10 @@ FUNCTION {format.date}
 }
 
 FUNCTION {format.btitle}
-{ title emphasize
+{ doi empty$
+    { title emphasize }
+    { "\doilink{" doi * "}{" * title emphasize * "}" * }
+  if$
 }
 
 FUNCTION {tie.or.space.connect}
