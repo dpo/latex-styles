@@ -285,23 +285,26 @@ FUNCTION {format.issn}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { new.block "URL \url{" url * "}" * }
+    { new.block "\url{" url * "}" * }
   if$
 }
 
 FUNCTION {format.doi}
-{ "" }
-% { doi empty$
-%     { "" }
-%     { new.block "\doi{" doi * "}" * }
-%   if$
-% }
+{ doi empty$
+    { "" }
+    { new.block "\doi{" doi * "}" * }
+  if$
+}
 
 FUNCTION {format.title}
 { title empty$
     { "" }
     { doi empty$
-        { title "t" change.case$ }
+        { url empty$
+          { title "t" change.case$ }
+          { "\href{" url * "}{" * title "t" change.case$ * "}" * }
+          if$
+        }
         { "\doilink{" doi * "}{" * title "t" change.case$ * "}" * }
       if$
     }
@@ -727,8 +730,8 @@ FUNCTION {article}
     }
   if$
   format.issn output
-  format.doi output
-  format.url output
+  % format.doi output
+  % format.url output
   new.block
   note output
   fin.entry
