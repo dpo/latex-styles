@@ -2,8 +2,6 @@
 
 % -- REVISION NUMBER --
 \usepackage{gitinfo}
-% \usepackage[right,marginal]{showlabels}
-% \renewcommand{\showlabelfont}{\normalfont\scriptsize\color{gray}}
 
 \makeatletter
 %
@@ -25,10 +23,11 @@
 \usepackage{microtype}
 \usepackage{subdepth}  % Equalize depth of subscripts. Amazing!
 \usepackage{xspace}
-\usepackage{boxedminipage}
+% \usepackage{boxedminipage}
 \usepackage{graphicx}
 \usepackage{algpseudocode}
 \usepackage{algorithmicx}
+\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\textit{#1}}}
 %
 % Bibliography style.
 %
@@ -45,8 +44,8 @@
 %
 % TikZ library.
 %
-\usepackage{tikz}
-\usetikzlibrary{matrix,arrows}
+% \usepackage{tikz}
+% \usetikzlibrary{matrix,arrows}
 %
 % To-do notes.
 %
@@ -102,37 +101,37 @@
 %
 % Boxed environments.
 %
-\newenvironment{btheorem}{%
-   \setlength{\fboxsep}{6pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{theorem}}
-    {\end{theorem}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
-%
-\newenvironment{bcorollary}{%
-   \setlength{\fboxsep}{6pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{corollary}}
-    {\end{corollary}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
-%
-\newenvironment{blemma}{%
-   \setlength{\fboxsep}{6pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{lemma}}
-    {\end{lemma}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
-%
-\newenvironment{bproposition}{%
-   \setlength{\fboxsep}{6pt}%
-   \par\hbox{}\noindent%
-   \begin{boxedminipage}{\textwidth}
-     \begin{proposition}}
-    {\end{proposition}
-    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%\newenvironment{btheorem}{%
+%   \setlength{\fboxsep}{6pt}%
+%   \par\hbox{}\noindent%
+%   \begin{boxedminipage}{\textwidth}
+%     \begin{theorem}}
+%    {\end{theorem}
+%    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%%
+%\newenvironment{bcorollary}{%
+%   \setlength{\fboxsep}{6pt}%
+%   \par\hbox{}\noindent%
+%   \begin{boxedminipage}{\textwidth}
+%     \begin{corollary}}
+%    {\end{corollary}
+%    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%%
+%\newenvironment{blemma}{%
+%   \setlength{\fboxsep}{6pt}%
+%   \par\hbox{}\noindent%
+%   \begin{boxedminipage}{\textwidth}
+%     \begin{lemma}}
+%    {\end{lemma}
+%    \end{boxedminipage}\vspace{0.5\baselineskip}}
+%%
+%\newenvironment{bproposition}{%
+%   \setlength{\fboxsep}{6pt}%
+%   \par\hbox{}\noindent%
+%   \begin{boxedminipage}{\textwidth}
+%     \begin{proposition}}
+%    {\end{proposition}
+%    \end{boxedminipage}\vspace{0.5\baselineskip}}
 %
 % Bordered matrices.
 %
@@ -175,42 +174,42 @@ $\kern\wd\@ne\kern -\@tempdima\left\@firstoftwo#1%
 % \newcommand{\C}{\mathds{C}}
 \newcommand{\mathhfill}{\hskip \textwidth minus \textwidth}
 
-\usepackage{pgfplots}
-% Moves axis labels near ticklabels (respects tick label widths).
-\pgfplotsset{compat=newest}
-\pgfplotsset{
-  tick label style={font=\tiny},
-  title style={font=\scriptsize},
-  label style={font=\scriptsize},
-  legend style={font=\scriptsize}
-}
+% \usepackage{pgfplots}
+% % Moves axis labels near ticklabels (respects tick label widths).
+% \pgfplotsset{compat=newest}
+% \pgfplotsset{
+%   tick label style={font=\tiny},
+%   title style={font=\scriptsize},
+%   label style={font=\scriptsize},
+%   legend style={font=\scriptsize}
+% }
 
 % Declare bold typewriter font with Computer Modern
 \DeclareFontShape{OT1}{cmtt}{bx}{n}{<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88>cmttb10}{}
 
-\usepackage{listings}
-\lstloadlanguages{Python, Matlab, C++}
-\definecolor{LightYellow}{rgb}{1.0,1.0,0.90}
-\definecolor{DimGray}{rgb}{0.412,0.412,0.412}
-\definecolor{MediumGray}{rgb}{0.5,0.5,0.5}
-\definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
-\definecolor{VeryLightGray}{rgb}{0.96,0.96,0.96}
-\lstset{
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\color{blue}\ttfamily\bfseries,
-  keywordstyle=[2]\color{SteelBlue}\ttfamily\bfseries,
-  commentstyle=\color{MediumGray},
-  identifierstyle=\color{DarkSlateGray},
-  stringstyle=\color{Gray},
-  showstringspaces=false,
-  numbers=left,
-  numberstyle=\tiny,
-  stepnumber=1,
-  tabsize=4,
-  numbersep=5pt,
-  backgroundcolor=\color{VeryLightGray},  % {LightYellow},
-  captionpos=b,
-  frame=tb,
-  keywordstyle={[3]\color{MediumGray}\bfseries},
-  morekeywords={super,None,dot,grad},
-}
+% \usepackage{listings}
+% \lstloadlanguages{Python, Matlab, C++}
+% \definecolor{LightYellow}{rgb}{1.0,1.0,0.90}
+% \definecolor{DimGray}{rgb}{0.412,0.412,0.412}
+% \definecolor{MediumGray}{rgb}{0.5,0.5,0.5}
+% \definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
+% \definecolor{VeryLightGray}{rgb}{0.96,0.96,0.96}
+% \lstset{
+%   basicstyle=\footnotesize\ttfamily,
+%   keywordstyle=\color{blue}\ttfamily\bfseries,
+%   keywordstyle=[2]\color{SteelBlue}\ttfamily\bfseries,
+%   commentstyle=\color{MediumGray},
+%   identifierstyle=\color{DarkSlateGray},
+%   stringstyle=\color{Gray},
+%   showstringspaces=false,
+%   numbers=left,
+%   numberstyle=\tiny,
+%   stepnumber=1,
+%   tabsize=4,
+%   numbersep=5pt,
+%   backgroundcolor=\color{VeryLightGray},  % {LightYellow},
+%   captionpos=b,
+%   frame=tb,
+%   keywordstyle={[3]\color{MediumGray}\bfseries},
+%   morekeywords={super,None,dot,grad},
+% }

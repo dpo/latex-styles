@@ -2,8 +2,8 @@
 %
 % Import definitions common to all styles.
 %
-\usepackage{latex_styles_common0}
 \usepackage{latex_styles_common}
+\usepackage{latex_styles_common0}
 %
 % Definitions specific to llncspaper.
 %
@@ -30,8 +30,8 @@
    \def\subsectionmark##1{}}
 
 \def\ps@myheadings{\let\@mkboth\@gobbletwo
-   \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
-   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
+   \def\@oddfoot{\normalfont\scriptsize\ttfamily\@cahierline\hfil\@gitline}
+   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil\@cahierline}
    \def\@evenhead{\normalfont\small\rlap{\thepage}\hspace{\headlineindent}%
     \leftmark\hfil\scshape\hyperlink{contents}{[toc]}}
     \def\@oddhead{\normalfont\small\scshape\hyperlink{contents}{[toc]}\hfil\rightmark\hspace{\headlineindent}%
@@ -47,10 +47,10 @@
 \newcommand{\Method}[1]{\texttt{#1()}}
 \newcommand{\Attribute}[1]{\texttt{#1}}
 
-\usepackage[
-% school,
-% simplified
-]{pgf-umlcd}
+% \usepackage[
+% % school,
+% % simplified
+% ]{pgf-umlcd}
 %
 % Operators.
 %
