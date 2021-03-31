@@ -31,8 +31,14 @@
 %
 % Bibliography style.
 %
-\usepackage[longnamesfirst]{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
+\usepackage[numbers,sort&compress]{natbib}
+
+% patch natbib to hyperlink author names when using the number style
+% https://tex.stackexchange.com/questions/76067/how-to-hyperlink-name-part-in-citet-using-natbib-numerical-and-hyperref
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\NAT@test}{\else \NAT@nm}{\else \NAT@hyper@{\NAT@nm}}{}{}
+\makeatother
 
 % Patch to insert bib labels in the right instead of left margin.
 % \newcommand{\fullrlap}[1]{%

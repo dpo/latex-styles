@@ -893,7 +893,7 @@ FUNCTION {inproceedings}
   if$
   format.isbn output
   % format.doi output
-  format.url output
+  % format.url output
   new.block
   note output
   fin.entry
