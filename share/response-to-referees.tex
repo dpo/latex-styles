@@ -34,10 +34,10 @@
   \todo[caption={\protect\hypertarget{todo}{} #2}, #1]{\hyperlink{todo}{#2}
 }}
 
-\usepackage{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
-\newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
-\renewcommand*{\url}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
+% \usepackage[number]{natbib}
+% \bibpunct{(}{)}{;}{a}{,}{,}
+% \newcommand*{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}
+% \renewcommand*{\url}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
 
 \begin{document}
 
@@ -54,7 +54,7 @@
 \section*{Reviewer 1 comments}
 
 \begin{enumerate}[label={\color{black}R1.\arabic*}]
-  \item \label{R1:comment1} Referee comment.
+  \item\label{R1:comment1} Referee comment.
 
   \begin{answer}
     Our answer.
@@ -74,7 +74,7 @@
 
 \begin{enumerate}[label={\color{black}R2.\arabic*}]
 
-  \item \label{R2:comment1} Referee comment.
+  \item\label{R2:comment1} Referee comment.
 
   \begin{answer}
     Our answer.
@@ -88,9 +88,19 @@
 
 \end{enumerate}
 
-\frenchspacing
-\bibliographystyle{abbrvnat}
-\bibliography{abbrv}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Other changes}
+
+\begin{enumerate}[label={\color{black}O.\arabic*}]
+
+  \item Description of other change.
+
+\end{enumerate}
+
+% \frenchspacing
+% \bibliographystyle{abbrvnat}
+% \bibliography{abbrv}
 
 \end{document}
 %%% Local Variables:
