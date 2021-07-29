@@ -44,6 +44,38 @@
   \@starttoc{loa}
   }
 \def\l@algorithm{\@dottedtocline{1}{.25in}{1.8em}}
+
+\renewenvironment{thebibliography}[1]
+     {\par\addvspace{.25in}
+     \begin{center}
+     \footnotesize\uppercase\expandafter{\refname}
+     \end{center}
+     \@mkboth{\uppercase\expandafter{\refname}}{\uppercase\expandafter{\refname}}
+     \addvspace{.15in}\nopagebreak%
+      \list{\@biblabel{\arabic{enumi}}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+%            \if@openbib
+              \advance\leftmargin\bibindent
+              \itemindent -\bibindent
+              \listparindent \itemindent
+              \parsep \z@
+%            \fi
+            \usecounter{enumi}%
+            \let\p@enumi\@empty
+            \renewcommand\theenumi{\arabic{enumi}}}%
+%      \if@openbib
+%        \renewcommand\newblock{\par}
+%      \else
+        \renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
+%      \fi
+      \sloppy\clubpenalty4000\widowpenalty4000%
+      \sfcode`\.=\@m\relax\footnotesize}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+
 \makeatother
 \renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\textit{#1}}}
 
