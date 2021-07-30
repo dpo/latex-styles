@@ -32,6 +32,23 @@
 % Bibliography style.
 %
 \usepackage[numbers,sort&compress]{natbib}
+% \bibhang only works for author-year style
+% this patch sets the indent after the first line to \bibindent in number style
+\setlength{\bibindent}{0pt}
+\makeatletter
+\renewcommand\NAT@bibsetnum[1]{\settowidth\labelwidth{\@biblabel{#1}}%
+   \setlength{\leftmargin}{\bibindent}\addtolength{\leftmargin}{\dimexpr\labelwidth+\labelsep\relax}%
+   \setlength{\itemindent}{-\bibindent}%
+   \setlength{\listparindent}{\itemindent}
+\setlength{\itemsep}{\bibsep}\setlength{\parsep}{\z@}%
+   \ifNAT@openbib
+     \addtolength{\leftmargin}{\bibindent}%
+     \setlength{\itemindent}{-\bibindent}%
+     \setlength{\listparindent}{\itemindent}%
+     \setlength{\parsep}{0pt}%
+   \fi
+}
+\makeatother
 
 % patch natbib to hyperlink author names when using the number style
 % https://tex.stackexchange.com/questions/76067/how-to-hyperlink-name-part-in-citet-using-natbib-numerical-and-hyperref
