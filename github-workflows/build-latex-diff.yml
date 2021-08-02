@@ -1,0 +1,42 @@
+name: Build LaTeX diff document
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    env:
+      PAPER: ${{ github.event.repository.name }}
+      MAIN: ${{ github.event.pull_request.base.sha }}
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Download LaTeX styles
+        run: |
+          curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
+          curl -OL https://www.siam.org/Portals/0/Macros/Standard/siamart_190516.zip
+          unzip master.zip
+          unzip siamart_190516.zip -d siam-styles
+      - name: Compile LaTeX diff
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: |
+            ${{ env.PAPER }}-diff${{ env.MAIN }}.tex
+          working_directory: paper
+          extra_system_packages: "git patch"
+          latexmk_shell_escape: true
+          pre_compile: latexdiff-vc --git --flatten --disable-auto-mbox --exclude-safecmd="Cref,Cref\*,hspace" -r ${{ env.MAIN }} ${{ env.PAPER }}.tex
+        env:
+          TEXINPUTS: ".:$PWD/../siam-styles:$PWD/../latex-styles-master/styles//:"
+      - name: Upload PDF
+        uses: actions/upload-artifact@v2
+        with:
+          name: DiffPDF
+          path: |
+            paper/${{ env.PAPER }}-diff${{ env.MAIN }}.pdf
