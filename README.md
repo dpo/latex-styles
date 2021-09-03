@@ -9,15 +9,20 @@ find them.
 
 ## Installing
 
-* If you don't want to read the two bullets below, simply run ``install.sh``.
+* If you don't want to read the two bullets below, simply run `install.sh`.
 
-* Set the environment variable ``LATEX_STYLES`` to point to the top of this
-  repository. E.g., if you cloned this repository to ``/some/dir/latex-styles``
-  then ``export LATEX_STYLES=/some/dir/latex-styles``.
+* Set the environment variable `LATEX_STYLES` to point to the top of this
+  repository. E.g., if you cloned this repository to `/some/dir/latex-styles`
+  then `export LATEX_STYLES=/some/dir/latex-styles`.
 
-* Add ``$LATEX_STYLES/styles`` to your ``$TEXINPUTS`` to ensure LaTeX will find
-  the style files: ``export TEXINPUTS=$LATEX_STYLES/styles//:$TEXINPUTS``. Note
-  the double backslash.
+* Add `$LATEX_STYLES/styles` to your `$TEXINPUTS`, `$BIBINPUTS` and `$BSTINPUTS`
+  to ensure LaTeX will find the style and bibliography files:
+  ```bash
+  export TEXINPUTS=$LATEX_STYLES/styles//:$TEXINPUTS
+  export BSTINPUTS=:$LATEX_STYLES/styles/common//:$BSTINPUTS
+  export BIBINPUTS=.:$LATEX_STYLES/share//:$BIBINPUTS
+  ```
+  Note the double backslash symbols.
 
 ## Basic Styles
 
@@ -28,24 +33,24 @@ find them.
 
 * [AMS](http://www.ams.org) is the American Mathematical Society. The style
   files for their journals is found in most LaTeX distributions. The class I
-  use is ``amsart``.
+  use is `amsart`.
 
 * [LNCS](http://www.springer.com/computer/lncs) is a style used for Springer's
   _Lecture Notes on Computer Science_ collection. The LaTeX files may be
   downloaded from
-  [www.springer.com/computer/lncs/lncs+authors](http://www.springer.com/computer/lncs/lncs+authors). The file ``llncs2e.zip`` contains all that is required.
+  [www.springer.com/computer/lncs/lncs+authors](http://www.springer.com/computer/lncs/lncs+authors). The file `llncs2e.zip` contains all that is required.
 
 ## Customizations
 
 The styles offer a number of standard customizations that I find useful across
 almost all scientific papers I write. Those include basic packages such as
-``graphicx``, ``tikz`` and others but also the following:
+`graphicx`, `tikz` and others but also the following:
 
 * the ability to add a table of contents, which is not supported by all styles
   by default (at least not without serious conflicts), and which I find very
   useful while writing the paper
 
-* the inclusion of the ``todonotes`` package along with the ability to add a
+* the inclusion of the `todonotes` package along with the ability to add a
   list of todo items, which is not supported by all styles either
 
 * a few commands to produce boxed lemmas, theorems and corollaries so as to
@@ -53,12 +58,12 @@ almost all scientific papers I write. Those include basic packages such as
   lemmas, theorems and corollaries blend in so much with the text that you
   almost can't see them
 
-* integration with ``git``.
+* integration with `git`.
 
 Some choices have been made that may not be to everybody's taste but that fits
 my needs and preferences best. Among them:
 
-* the bibliography style is always ``natbib``'s ``plainnat`` author-year style.
+* the bibliography style is always `natbib`'s `plainnat` author-year style.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpo/latex-styles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
