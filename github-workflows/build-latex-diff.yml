@@ -34,6 +34,8 @@ jobs:
           pre_compile: latexdiff-vc --git --flatten --disable-auto-mbox --exclude-safecmd="Cref,Cref\*,hspace" -r ${{ env.MAIN }} ${{ env.PAPER }}.tex
         env:
           TEXINPUTS: ".:$PWD/../siam-styles:$PWD/../latex-styles-master/styles//:"
+          BSTINPUTS: ".:$PWD/../latex-styles-master/styles/common"
+          BIBINPUTS: ".:$PWD/../latex-styles-master/share"
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:
