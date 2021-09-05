@@ -60,10 +60,12 @@ almost all scientific papers I write. Those include basic packages such as
 
 * integration with `git`.
 
-Some choices have been made that may not be to everybody's taste but that fits
+Some choices have been made that may not be to everybody's taste but that fit
 my needs and preferences best. Among them:
 
-* the bibliography style is always `natbib`'s `plainnat` author-year style.
+* the bibliography style is always `natbib`'s `plainnat` number style.
+  Thus we never use `\cite` but only `\citep` and `\citet`.
+  See the [natbib reference sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpo/latex-styles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
