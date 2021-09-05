@@ -15,14 +15,14 @@ find them.
   repository. E.g., if you cloned this repository to `/some/dir/latex-styles`
   then `export LATEX_STYLES=/some/dir/latex-styles`.
 
-* Add `$LATEX_STYLES/styles` to your `$TEXINPUTS`, `$BIBINPUTS` and `$BSTINPUTS`
+* Add `$LATEX_STYLES` to your `$TEXINPUTS`, `$BIBINPUTS` and `$BSTINPUTS`
   to ensure LaTeX will find the style and bibliography files:
   ```bash
   export TEXINPUTS=$LATEX_STYLES/styles//:$TEXINPUTS
   export BSTINPUTS=:$LATEX_STYLES/styles/common//:$BSTINPUTS
   export BIBINPUTS=.:$LATEX_STYLES/share//:$BIBINPUTS
   ```
-  Note the double backslash symbols.
+  Note the double slash symbols.
 
 ## Basic Styles
 
