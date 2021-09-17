@@ -18,11 +18,11 @@ find them.
 * Add `$LATEX_STYLES` to your `$TEXINPUTS`, `$BIBINPUTS` and `$BSTINPUTS`
   to ensure LaTeX will find the style and bibliography files:
   ```bash
-  export TEXINPUTS=$LATEX_STYLES/styles//:$TEXINPUTS
-  export BSTINPUTS=:$LATEX_STYLES/styles/common//:$BSTINPUTS
-  export BIBINPUTS=.:$LATEX_STYLES/share//:$BIBINPUTS
+  export TEXINPUTS=.:$LATEX_STYLES/styles//:$TEXINPUTS
+  export BSTINPUTS=.:$LATEX_STYLES/styles/common::
+  export BIBINPUTS=.:$LATEX_STYLES/share::
   ```
-  Note the double slash symbols.
+  Note the double slash symbols and double colons.
 
 ## Basic Styles
 
