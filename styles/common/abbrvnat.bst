@@ -945,7 +945,7 @@ FUNCTION {misc}
   howpublished output
   format.date output
   format.issn output
-  format.url output
+  % format.url output
   new.block
   note output
   fin.entry

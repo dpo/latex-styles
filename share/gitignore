@@ -1,4 +1,5 @@
 *~
+*.bbl
 *.blg
 *.lof
 *.lot
@@ -11,6 +12,11 @@
 *.out
 *.rel
 *.fls
+*.pdf
+*.thm
 *.synctex.gz
+*.gin
+*.md5
+*.dpth
 *-eps-converted-to.pdf
 vc.tex
