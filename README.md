@@ -35,10 +35,21 @@ find them.
   files for their journals is found in most LaTeX distributions. The class I
   use is `amsart`.
 
-* [LNCS](http://www.springer.com/computer/lncs) is a style used for Springer's
+* [LNCS](https://www.springer.com/gb/computer-science/lncs) is a style used for Springer's
   _Lecture Notes on Computer Science_ collection. The LaTeX files may be
   downloaded from
-  [www.springer.com/computer/lncs/lncs+authors](http://www.springer.com/computer/lncs/lncs+authors). The file `llncs2e.zip` contains all that is required.
+  https://www.springer.com/gb/computer-science/lncs/conference-proceedings-guidelines.
+  The file `llncs2e.zip` contains all that is required.
+
+* [Springer](https://media.springer.com/full/springer-instructions-for-authors-assets/zip/468198_LaTeX_DL_468198_240419.zip) is the style used for journals such as _Mathematical Programming_ and _Mathematical Programming Computation_.
+  The LaTeX files may be downloaded from https://media.springer.com/full/springer-instructions-for-authors-assets/zip/468198_LaTeX_DL_468198_240419.zip.
+
+## Editor Setup
+
+If you use VSCode, install the extensions
+
+* [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+* [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex)
 
 ## Customizations
 
