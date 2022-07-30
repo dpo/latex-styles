@@ -1,0 +1,53 @@
+\ProvidesPackage{springerpaper}
+%
+% Import definitions common to all styles.
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+\usepackage{amsmath}
+% fix conflict between svjour3 and cleveref (https://tex.stackexchange.com/questions/327414/svjour3-and-certain-packages-conflict/327686#327686)
+\newcounter{chapter} % to fix the bug in svjour3
+\usepackage{latex_styles_common0}
+\usepackage{latex_styles_common}
+%
+% Definitions specific to springerpaper.
+%
+\usepackage{amsfonts}
+\newcommand*{\URL}[1]{\href{\detokenize{#1}}{\texttt{\detokenize{#1}}}}
+%
+% Make a proper TOC.
+%
+\setcounter{tocdepth}{2}
+\makeatletter
+
+\def\ps@mytitlepage{\let\@mkboth\@gobbletwo
+   \def\@oddfoot{\normalfont\scriptsize\ttfamily\hfil\@gitline}
+   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil}
+   \def\@evenhead{\normalfont\small\rlap{\@cahierline}\hspace{\headlineindent}%
+                  \hfil}
+   \def\@oddhead{\normalfont\small\hfil\hspace{\headlineindent}%
+                 \llap{\@cahierline}}
+   \def\chaptermark##1{}%
+   \def\sectionmark##1{}%
+   \def\subsectionmark##1{}}
+
+\def\ps@myheadings{\let\@mkboth\@gobbletwo
+   \def\@oddfoot{\normalfont\scriptsize\ttfamily\@cahierline\hfil\@gitline}
+   \def\@evenfoot{\normalfont\scriptsize\ttfamily\@gitline\hfil\@cahierline}
+   \def\@evenhead{\normalfont\small\rlap{\thepage}\hspace{\headlineindent}%
+    \leftmark\hfil\scshape\hyperlink{contents}{[toc]}}
+    \def\@oddhead{\normalfont\small\scshape\hyperlink{contents}{[toc]}\hfil\rightmark\hspace{\headlineindent}%
+                 \llap{\thepage}}
+   \def\chaptermark##1{}%
+   \def\sectionmark##1{}%
+   \def\subsectionmark##1{}}
+\makeatother
+%
+% Operators.
+%
+\newcommand{\Range}{\mathop{\mathrm{Range}}}
+%
+% Environments.
+%
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{corollary}{Corollary}{Corollaries}
