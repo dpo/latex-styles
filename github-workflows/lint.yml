@@ -1,0 +1,31 @@
+name: ChkTeX
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checking out repository
+      uses: actions/checkout@v1
+    - name: LaTeX linter (chktex)
+      uses: dpo/chktex-action@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build comment
+      id: build-comment
+      uses: actions/github-script@v4
+      with:
+        github-token: ${{ github.token }}
+        result-encoding: string
+        script: |
+          const fs = require('fs');
+          return "Chktex output: \n```\n" + fs.readFileSync("${{ github.workspace }}/chktex_output.txt", "utf8").toString() + "```";
+    - name: Comment in PR
+      uses: thollander/actions-comment-pull-request@v1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        message: ${{ steps.build-comment.outputs.result }}
