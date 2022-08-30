@@ -7,7 +7,9 @@
 % Import definitions common to all styles.
 %
 \usepackage{latex_styles_common}
-\renewcommand{\linenumbersep}{40pt}
+\ifdefined\linenumbersep
+  \renewcommand{\linenumbersep}{40pt}
+\fi
 \renewcommand*{\bibfont}{\footnotesize}
 %
 % Page styles.
