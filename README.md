@@ -28,7 +28,7 @@ find them.
 
 ### Windows (TeXLive)
 
-* run `kpsewhich -var-value=TEXHOME` to retrieve the directory `path\to\texmf` where to put the files. The typical output is `C:/Users/username/texmf` with `username` your actual user name.
+* Run `kpsewhich -var-value=TEXHOME` to retrieve the directory `path\to\texmf` where to put the files. The typical output is `C:/Users/username/texmf` with `username` your actual user name.
 
 * If the `texmf` folder does not exist in `path\to\`, create it.
 
