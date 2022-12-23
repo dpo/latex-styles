@@ -1,9 +1,5 @@
 name: Build LaTeX diff document
 on:
-  push:
-    branches:
-      - master
-      - main
   pull_request:
     types: [opened, synchronize, reopened]
 
