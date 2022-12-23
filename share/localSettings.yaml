@@ -1,15 +1,91 @@
+indentPreamble: 1
+defaultIndent: "  "
+
+indentAfterHeadings:
+    part:
+       indentAfterThisHeading: 0
+       level: 1
+    chapter:
+       indentAfterThisHeading: 0
+       level: 2
+    section:
+       indentAfterThisHeading: 1
+       level: 3
+    subsection:
+       indentAfterThisHeading: 1
+       level: 4
+    subsection*:
+       indentAfterThisHeading: 1
+       level: 4
+    subsubsection:
+       indentAfterThisHeading: 1
+       level: 5
+    paragraph:
+       indentAfterThisHeading: 1
+       level: 6
+    subparagraph:
+       indentAfterThisHeading: 1
+       level: 7
+
+noAdditionalIndent:
+    document: 0
+
+indentRules:
+   chapter: " "
+   section: "  "
+   subsection: "  "
+   paragraph: "  "
+   item: "  "
+
+dos2unixlinebreaks: 1
+
 modifyLineBreaks:
     oneSentencePerLine:
         manipulateSentences: 1
         sentencesBeginWith:
-            other: "\$|\\("
+            other: "\$|\\\\\("
+    commands:
+        label:
+            CommandStartsOnOwnLine: 1
+    mandatoryArguments:
+        label:
+            RCuBFinishesWithLineBreak: 1
+    # poly-switches below here
     environments:
+        DBSStartsOnOwnLine: 0
+        DBSFinishesWithLineBreak: 1
         BeginStartsOnOwnLine: 1
-        BodyStartsOnOwnLine: 1
+        BodyStartsOnOwnLine: 2  # add % after \begin{env} to preserve page reference
         EndStartsOnOwnLine: 1
         EndFinishesWithLineBreak: 1
         equation*:
             BeginStartsOnOwnLine: 1
+            BodyStartsOnOwnLine: 1  # no need for % here
+            EndStartsOnOwnLine: 1
+            EndFinishesWithLineBreak: 1
+        align*:
+            BeginStartsOnOwnLine: 1
             BodyStartsOnOwnLine: 1
             EndStartsOnOwnLine: 1
             EndFinishesWithLineBreak: 1
+        cases:
+            BeginStartsOnOwnLine: 1
+            BodyStartsOnOwnLine: 1
+            EndStartsOnOwnLine: 1
+            EndFinishesWithLineBreak: 1
+    specialBeginEnd:
+        displayMath:
+          SpecialBeginStartsOnOwnLine: 1
+          SpecialBodyStartsOnOwnLine: 1
+          SpecialEndStartsOnOwnLine: 1
+          SpecialEndFinishesWithLineBreak: 1
+        quad:
+          SpecialBeginStartsOnOwnLine: 1
+          SpecialEndFinishesWithLineBreak: 1
+
+# make \quad and \qquad appear on their own line
+specialBeginEnd:
+    quad:
+        begin: \\q+ua   # \\qua or \\qqua
+        end: d          # d
+        lookForThis: 1
