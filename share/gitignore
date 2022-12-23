@@ -20,3 +20,4 @@
 *.dpth
 *-eps-converted-to.pdf
 vc.tex
+*.bak*
