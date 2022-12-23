@@ -1,0 +1,23 @@
+name: latexindent
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checking out repository
+      uses: actions/checkout@v3
+    - name: Install latexindent
+      run: brew install latexindent
+    - name: Run latexindent
+      id: run-latexindent
+      run: |
+        shopt -s nullglob  # allow empty loops below
+        for f in paper/*.tex; do latexindent -l -m -w $f; done
+        for f in paper/*.bib; do latexindent -l -m -w $f; done
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
