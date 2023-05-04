@@ -17,3 +17,4 @@ jobs:
             prefix: "Here is the compiled"
             format: "name"
             addTo: "pull"
+        if: github.event_name == 'pull_request'
