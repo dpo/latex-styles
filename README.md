@@ -30,6 +30,7 @@ find them.
   Mathematics. The LaTeX style files for their journals may be downloaded from
   [www.siam.org/journals/auth-info.php](http://www.siam.org/journals/auth-info.php).
   The zip file contains all that is required.
+  The main `cls` file is already included in `$LATEX_STYLES/styles/siampaper`.
 
 * [AMS](http://www.ams.org) is the American Mathematical Society. The style
   files for their journals is found in most LaTeX distributions. The class I
@@ -43,6 +44,7 @@ find them.
 
 * [Springer](https://media.springer.com/full/springer-instructions-for-authors-assets/zip/468198_LaTeX_DL_468198_240419.zip) is the style used for journals such as _Mathematical Programming_ and _Mathematical Programming Computation_.
   The LaTeX files may be downloaded from https://media.springer.com/full/springer-instructions-for-authors-assets/zip/468198_LaTeX_DL_468198_240419.zip.
+  The main `svjour3.cls` is already included in `$LATEX_STYLES/styles/springerpaper`.
 
 ## Editor Setup
 
@@ -74,10 +76,7 @@ almost all scientific papers I write. Those include basic packages such as
 Some choices have been made that may not be to everybody's taste but that fit
 my needs and preferences best. Among them:
 
-* the bibliography style is always `natbib`'s `plainnat` number style.
+* the bibliography style is always `natbib`'s `abbrvnat` style.
   Thus we never use `\cite` but only `\citep` and `\citet`.
   See the [natbib reference sheet](http://merkel.texture.rocks/Latex/natbib.php).
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dpo/latex-styles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
