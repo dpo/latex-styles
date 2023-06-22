@@ -20,7 +20,7 @@ jobs:
       - name: Download LaTeX styles
         run: |
           curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
-          unzip master.zip -d latex-styles
+          unzip master.zip
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
@@ -31,9 +31,9 @@ jobs:
           latexmk_shell_escape: true
           pre_compile: git config --global --add safe.directory /github/workspace
         env:
-          TEXINPUTS: ".:$PWD/../latex-styles/styles//:"
-          BSTINPUTS: ".:$PWD/../latex-styles/styles/common"
-          BIBINPUTS: ".:$PWD/../latex-styles/share"
+          TEXINPUTS: ".:$PWD/../latex-styles-master/styles//:"
+          BSTINPUTS: ".:$PWD/../latex-styles-master/styles/common"
+          BIBINPUTS: ".:$PWD/../latex-styles-master/share"
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:
