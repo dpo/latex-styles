@@ -20,11 +20,7 @@ jobs:
       - name: Download LaTeX styles
         run: |
           curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
-          curl -OL https://epubs.siam.org/pb-assets/macros/standard/siamart_220329.zip
-          curl -OL https://media.springer.com/full/springer-instructions-for-authors-assets/zip/468198_LaTeX_DL_468198_240419.zip
           unzip master.zip -d latex-styles
-          unzip siamart_220329.zip -d siam-styles
-          unzip 468198_LaTeX_DL_468198_240419.zip -d springer-styles
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
@@ -35,7 +31,7 @@ jobs:
           latexmk_shell_escape: true
           pre_compile: git config --global --add safe.directory /github/workspace
         env:
-          TEXINPUTS: ".:$PWD/../siam-styles:$PWD/../springer-styles:$PWD/../latex-styles/styles//:"
+          TEXINPUTS: ".:$PWD/../latex-styles/styles//:"
           BSTINPUTS: ".:$PWD/../latex-styles/styles/common"
           BIBINPUTS: ".:$PWD/../latex-styles/share"
       - name: Upload PDF
