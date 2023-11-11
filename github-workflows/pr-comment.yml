@@ -10,11 +10,11 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: add artifact links to pull request and related issues step
+        if: needs.pr-check.outputs.number != null
         uses: veitbjarsch/artifacts-url-comments@v1.1.0
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-            prefix: "Here is the compiled"
+            prefix: "Status:"
             format: "name"
             addTo: "pull"
-        if: github.event_name == 'pull_request'
