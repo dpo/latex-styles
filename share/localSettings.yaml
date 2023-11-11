@@ -1,15 +1,95 @@
+indentPreamble: 0
+defaultIndent: "  "
+removeTrailingWhitespace: 1
+
+dos2unixlinebreaks: 1
+
+indentRules:
+  item: "  "
+
+indentAfterItems:
+    itemize: 1
+    itemize*: 1
+    enumerate: 1
+    enumerate*: 1
+    description: 1
+    description*: 1
+    list: 1
+
+verbatimEnvironments:
+  verbatim: 1
+  lstlisting: 1
+  minted: 1
+  jllisting: 1
+
+verbatimCommands:
+  verb: 1
+  lstinline: 1
+
+# https://github.com/cmhughes/latexindent.pl/issues/393#issuecomment-1529162115
+# lookForAlignDelims:
+#    align:
+#       alignContentAfterDoubleBackSlash: 1
+
 modifyLineBreaks:
     oneSentencePerLine:
         manipulateSentences: 1
+        removeSentenceLineBreaks: 0
         sentencesBeginWith:
-            other: "\$|\\("
+            A-Z: 0
+            a-z: 0
+            other: "\([A-Z]|[A-Z]|\$|\\\\\("  # account for parenthetical sentences
+        sentencesEndWith:
+            basicFullStop: 0
+            betterFullStop: 0
+            exclamationMark: 0
+            questionMark: 0
+            other: "\.\)|\?\)|\!\)|\. |\? |\! "  # account for parenthetical sentences
+    commands:
+        label:
+            CommandStartsOnOwnLine: 1
+        State:
+            CommandNameFinishesWithLineBreak: 2
+    mandatoryArguments:
+        label:
+            RCuBFinishesWithLineBreak: 2
+        section:
+            RCuBFinishesWithLineBreak: 2
+        subsection:
+            RCuBFinishesWithLineBreak: 2
+    # poly-switches below here
+    textWrapOptions:
+      columns: 0
+      multipleSpacesToSingle: 1
+      comments: 
+        wrap: 0
     environments:
+        DBSStartsOnOwnLine: 0
+        DBSFinishesWithLineBreak: 1
         BeginStartsOnOwnLine: 1
-        BodyStartsOnOwnLine: 1
+        BodyStartsOnOwnLine: 2  # add % after \begin{env} to preserve page reference
         EndStartsOnOwnLine: 1
         EndFinishesWithLineBreak: 1
-        equation*:
-            BeginStartsOnOwnLine: 1
-            BodyStartsOnOwnLine: 1
-            EndStartsOnOwnLine: 1
-            EndFinishesWithLineBreak: 1
+    optionalArguments:
+        cases:
+           LSqBStartsOnOwnLine: 1
+    specialBeginEnd:
+        displayMath:
+          SpecialBeginStartsOnOwnLine: 1
+          SpecialBodyStartsOnOwnLine: 1
+          SpecialEndStartsOnOwnLine: 1
+          SpecialEndFinishesWithLineBreak: 1
+        and:
+          SpecialEndFinishesWithLineBreak: 1
+
+specialBeginEnd:
+    and:
+        begin: \\an
+        end: d          # d
+        lookForThis: 1
+
+replacements:
+  -
+    when: after
+    substitution: |-
+      s/%{2,}/%/sg
