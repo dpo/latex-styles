@@ -11,7 +11,7 @@ jobs:
       MAIN: ${{ github.event.pull_request.base.sha }}
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Download LaTeX styles
@@ -19,7 +19,8 @@ jobs:
           curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
           unzip master.zip
       - name: Compile LaTeX diff
-        uses: xu-cheng/latex-action@v2
+        id: compileLaTeXdiff
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: |
             ${{ env.PAPER }}-diff${{ env.MAIN }}.tex
@@ -31,9 +32,21 @@ jobs:
           TEXINPUTS: ".:$PWD/../latex-styles-master/styles//:"
           BSTINPUTS: ".:$PWD/../latex-styles-master/styles/common"
           BIBINPUTS: ".:$PWD/../latex-styles-master/share"
+        continue-on-error: true
       - name: Upload PDF
-        uses: actions/upload-artifact@v2
+        if: steps.compileLaTeXdiff.outcome == 'success'
+        uses: actions/upload-artifact@v3
         with:
-          name: DiffPDF
+          name: Success--Here-is-the-Diff-PDF
           path: |
             paper/${{ env.PAPER }}-diff${{ env.MAIN }}.pdf
+      - name: Upload build logs
+        if: steps.compileLaTeXdiff.outcome == 'failure'
+        uses: actions/upload-artifact@v3
+        with:
+          name: Diff-Build-Failed--Here-are-the-Logs
+          path: |
+            paper/**/*.log
+      - name: Fail job if build failed
+        if: steps.compileLaTeXdiff.outcome == 'failure'
+        run: exit 1
