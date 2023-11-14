@@ -80,3 +80,39 @@ my needs and preferences best. Among them:
   Thus we never use `\cite` but only `\citep` and `\citet`.
   See the [natbib reference sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
+## Format
+
+- To format `.tex` files, use the [latexindent](https://latexindentpl.readthedocs.io/en/stable/) package. Install it on your Mac with the following command:
+
+  ```bash
+  brew install latexindent
+  ```
+
+- After installation, navigate to Parameters in Latex Workshop and find the setting for `latexindent`.
+
+- Ensure that you adjust the ```Path``` and the ``Args`` as indicated below:
+
+    <img src="https://github.com/MohamedLaghdafHABIBOULLAH/Optimization_with_Julia/blob/main/latexindent_settings.png" alt="latexindent" height="125px">
+
+## Linting
+
+- For semantic checking, employ [ChkTeX](https://www.nongnu.org/chktex/) which is also available as part of [TeXLive](https://www.tug.org/texlive/).
+
+- After installation, navigate to Parameters in Latex Workshop and find the setting for `ChkTeX`.
+
+- Enable linting Latex with ```ChkTeX``` and specify the correct ```Path``` to it if necessary:
+
+  <img src="https://github.com/MohamedLaghdafHABIBOULLAH/Optimization_with_Julia/blob/main/Chktex_settings.png" alt="ChkTeX" height="125px">
+
+- Ensure that the ```.chktexrc``` file (if exists) is present in the same folder as the ```.tex``` file.
+
+- Make sure that your ```.chktexrc``` file does not include a ```CmdLine``` section with the following content:
+
+  ```bash
+  CmdLine
+  {
+    -v2  # This option should be removed
+    -n 1
+    -n 44
+  }
+  ```
