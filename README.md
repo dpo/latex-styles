@@ -48,10 +48,7 @@ find them.
 
 ## Editor Setup
 
-If you use VSCode, install the extensions
-
-* [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
-* [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex)
+Please see the [wiki](https://github.com/dpo/latex-styles/wiki) for instructions on how to set up your environment for an awesome LaTeX experience, including how to set up popular editors.
 
 ## Customizations
 
