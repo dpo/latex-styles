@@ -11,6 +11,14 @@
     git clone --template=latex-styles https://github.com:user/name_of_this_repo.git
     ```
 
+## Please, Please, Please
+
+1. Read [this README](https://github.com/dpo/latex-styles#readme)
+2. Read [the wiki](https://github.com/dpo/latex-styles/wiki)
+3. Do read both documents above *carefully*.
+
+Thank you.
+
 ## Conventions
 
 1. Write clean LaTeX code:
