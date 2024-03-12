@@ -8,7 +8,8 @@
 % Tech report number to go at top of first page.
 %
 \def\cahierline{\gdef\@cahierline}
-\cahierline{\textcolor{gray}{Cahier du GERAD G-\number\year-\cahiernumber}}
+\def\cahieryear{\year}
+\cahierline{\textcolor{gray}{Cahier du GERAD G-\number\cahieryear-\cahiernumber}}
 %
 % Git info line.
 %
