@@ -10,7 +10,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: add artifact links to pull request and related issues step
-        uses: veitbjarsch/artifacts-url-comments@v1.1.0
+        uses: veitbjarsch/artifacts-url-comments@main
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
