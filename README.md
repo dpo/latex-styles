@@ -77,3 +77,11 @@ my needs and preferences best. Among them:
   Thus we never use `\cite` but only `\citep` and `\citet`.
   See the [natbib reference sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
+## GitHub Actions
+
+In order for GitHub Actions to work properly, set the following permissions in your repository's settings, under Actions > General:
+
+* Check *Action permissions > Allow all actions and reusable workflows*.
+* Check *Workflow permissions > Read and write permissions*.
+* Check *Allow GitHub Actions to create and approve pull requests*.
+
