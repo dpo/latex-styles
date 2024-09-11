@@ -22,6 +22,7 @@ jobs:
         id: compileLaTeXdiff
         uses: xu-cheng/latex-action@v3
         with:
+          texlive_version: 2023
           root_file: |
             ${{ env.PAPER }}-diff${{ env.MAIN }}.tex
           working_directory: paper
@@ -42,7 +43,7 @@ jobs:
             paper/${{ env.PAPER }}-diff${{ env.MAIN }}.pdf
       - name: Upload build logs
         if: steps.compileLaTeXdiff.outcome == 'failure'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Diff-Build-Failed--Here-are-the-Logs
           path: |
