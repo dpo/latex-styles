@@ -38,7 +38,7 @@ jobs:
         continue-on-error: true
       - name: Upload PDF
         if: steps.compileLaTeXdocument.outcome == 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Success--Here-is-the-PDF
           path: |
@@ -53,3 +53,29 @@ jobs:
       - name: Fail job if build failed
         if: steps.compileLaTeXdocument.outcome == 'failure'
         run: exit 1
+      - name: Create release
+        if: github.event_name == 'push'
+        uses: rymndhng/release-on-push-action@master
+        id: release
+        with:
+          # add a label to your pull request to change the default behavior:
+          # release:major
+          # release:minor
+          # release:patch
+          # norelease
+          bump_version_scheme: patch
+          tag_prefix: v
+          release_body: ""
+          use_github_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload PDF to release
+        if: github.event_name == 'push'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: paper/${{ env.PAPER }}.pdf
+          asset_name: ${{ env.PAPER }}.pdf
+          tag: ${{ steps.release.outputs.tag_name }}
+          overwrite: true
+          body: ""
