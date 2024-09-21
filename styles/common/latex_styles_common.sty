@@ -37,6 +37,7 @@
 % this patch sets the indent after the first line to \bibindent in number style
 \setlength{\bibindent}{0pt}
 \makeatletter
+\renewcommand*{\NAT@spacechar}{~}
 \renewcommand\NAT@bibsetnum[1]{\settowidth\labelwidth{\@biblabel{#1}}%
    \setlength{\leftmargin}{\bibindent}\addtolength{\leftmargin}{\dimexpr\labelwidth+\labelsep\relax}%
    \setlength{\itemindent}{-\bibindent}%
