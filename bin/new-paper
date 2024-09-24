@@ -49,6 +49,7 @@ cp $LATEX_STYLES/share/response-to-referees.tex ./$paper/$papername-response-to-
 cp $LATEX_STYLES/share/gitignore ./$papername/.gitignore
 cp $LATEX_STYLES/share/README.md ./$papername/README.md
 cp $LATEX_STYLES/share/localSettings.yaml ./$paper/
+cp $LATEX_STYLES/share/local.rsc ./$paper/
 cp $LATEX_STYLES/share/chktexrc ./$paper/.chktexrc
 cp $LATEX_STYLES/github-workflows/* ./$workflows/
 cd $papername

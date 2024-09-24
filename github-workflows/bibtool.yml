@@ -1,4 +1,4 @@
-name: latexindent
+name: bibtool
 
 on:
   push:
@@ -7,21 +7,23 @@ on:
       - 'master'
 
 jobs:
-  latexindent:
+  bibtool:
     runs-on: macos-latest
     steps:
     - name: Checking out repository
       uses: actions/checkout@v3
-    - name: Install latexindent
-      run: brew install latexindent
-    - name: Run latexindent
-      id: run-latexindent
+    - name: Install bibtool
+      run: brew install bib-tool
+    - name: Run bibtool
+      id: run-bibtool
       run: |
         shopt -s nullglob  # allow empty loops below
         cd paper
-        for f in *.tex; do latexindent -l ./localSettings.yaml -m -r -w $f; done
-        rm *.bak[0-9]
+        for f in *.bib; do
+          bibtool -R -r braces.rsc -r field.rsc -r improve.rsc -r sort_fld.rsc -r ./local.rsc -i $f -o _out_$f
+          mv _out_$f $f
+        done
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
-        branch: latexindent-patch
+        branch: bibtool-patch
