@@ -8,7 +8,7 @@
 %
 \usepackage{latex_styles_common}
 \ifdefined\linenumbersep
-  \renewcommand{\linenumbersep}{40pt}
+  \setlength\linenumbersep{40pt}
 \fi
 \renewcommand*{\bibfont}{\footnotesize}
 %
@@ -79,7 +79,6 @@
       \endlist}
 
 \makeatother
-\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\textit{#1}}}
 
 % The SIAM style doesn't seem to let us display a table of contents...
 % Let's fix that.
