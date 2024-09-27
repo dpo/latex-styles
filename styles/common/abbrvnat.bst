@@ -824,7 +824,7 @@ FUNCTION {inbook}
   format.edition output
   format.date "year" output.check
   format.isbn output
-  format.doi output
+  % format.doi output
   format.url output
   new.block
   note output
