@@ -176,6 +176,7 @@ TabSize = 8
 CmdLine
 {
   -n 1
+  -n 3
   -n 44
 }
 
