@@ -3,3 +3,4 @@ print.terminal.comma = on
 print.use.tab = off
 print.wide.equal = on
 check.double.delete = on
+new.entry.type {Software}
