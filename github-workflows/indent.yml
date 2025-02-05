@@ -1,4 +1,4 @@
-name: bibtool
+name: indent
 
 on:
   push:
@@ -6,14 +6,24 @@ on:
       - 'main'
       - 'master'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  bibtool:
+  build:
     runs-on: macos-latest
     steps:
     - name: Checking out repository
-      uses: actions/checkout@v3
-    - name: Install bibtool
-      run: brew install bib-tool
+      uses: actions/checkout@v4
+    - name: Install latexindent and bibtool
+      run: brew install latexindent bib-tool
+    - name: Run latexindent
+      id: run-latexindent
+      run: |
+        shopt -s nullglob  # allow empty loops below
+        for f in *.tex; do latexindent -l ./localSettings.yaml -m -r -w $f; done
+        rm -f *.bak[0-9] indent.log
     - name: Run bibtool
       id: run-bibtool
       run: |
@@ -25,5 +35,3 @@ jobs:
         done
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
-      with:
-        branch: bibtool-patch
