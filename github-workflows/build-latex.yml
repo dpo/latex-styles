@@ -25,6 +25,7 @@ jobs:
         id: compileLaTeXdocument
         uses: xu-cheng/latex-action@v3
         with:
+          texlive_version: 2023
           root_file: |
             ${{ env.PAPER }}.tex
           working_directory: paper
@@ -45,7 +46,7 @@ jobs:
             paper/${{ env.PAPER }}.pdf
       - name: Upload build logs
         if: steps.compileLaTeXdocument.outcome == 'failure'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Build-Failed--Here-are-the-Logs
           path: |
