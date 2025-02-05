@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  indent:
     runs-on: macos-latest
     steps:
     - name: Checking out repository

@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build_latex:
+  build_latex_diff:
     runs-on: ubuntu-latest
     env:
       PAPER: ${{ github.event.repository.name }}
@@ -28,7 +28,7 @@ jobs:
           working_directory: paper
           extra_system_packages: "git patch"
           latexmk_shell_escape: true
-          pre_compile: git config --global --add safe.directory /github/workspace && latexdiff-vc --git --flatten --disable-auto-mbox --exclude-safecmd="Cref,Cref\*,hspace" -r ${{ env.MAIN }} ${{ env.PAPER }}.tex
+          pre_compile: git config --global --add safe.directory /github/workspace && latexdiff-vc --git --flatten --disable-auto-mbox --exclude-safecmd="Cref,Cref\*,hspace" --allow-spaces --no-links -r ${{ env.MAIN }} ${{ env.PAPER }}.tex
         env:
           TEXINPUTS: ".:$PWD/../latex-styles-master/styles//:"
           BSTINPUTS: ".:$PWD/../latex-styles-master/styles/common"
@@ -36,7 +36,7 @@ jobs:
         continue-on-error: true
       - name: Upload PDF
         if: steps.compileLaTeXdiff.outcome == 'success'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Success--Here-is-the-Diff-PDF
           path: |

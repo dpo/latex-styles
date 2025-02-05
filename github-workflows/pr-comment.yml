@@ -1,7 +1,7 @@
 name: add artifact links to pr
 on:
   workflow_run:
-    workflows: ["Build LaTeX document", "Build LaTeX diff document"]
+    workflows: ["Build LaTeX document", "Build LaTeX diff document", "Build response-to-referees"]
     types: [completed]
 
 jobs:
