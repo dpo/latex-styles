@@ -9,6 +9,10 @@ on:
     types: [opened, synchronize, reopened]
     paths: ['paper/response-to-referees.tex']
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
