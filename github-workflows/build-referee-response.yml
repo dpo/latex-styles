@@ -11,6 +11,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
+  # ok to cancel concurrent builds on main; this pdf is not part of releases
   cancel-in-progress: true
 
 jobs:
