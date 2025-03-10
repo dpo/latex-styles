@@ -9,6 +9,8 @@ find them.
 
 ## Installing
 
+### Mac / Linux
+
 * If you don't want to read the two bullets below, simply run `install.sh`.
 
 * Set the environment variable `LATEX_STYLES` to point to the top of this
@@ -23,6 +25,24 @@ find them.
   export BIBINPUTS=.:$LATEX_STYLES/share::
   ```
   Note the double slash symbols and double colons.
+
+### Windows (TeXLive)
+
+* Run `kpsewhich -var-value=TEXHOME` to retrieve the directory `path\to\texmf` where to put the files. The typical output is `C:/Users/username/texmf` with `username` your actual user name.
+
+* If the `texmf` folder does not exist in `path\to\`, create it.
+
+* Following the [TeX directory structure (TDS)](https://ctan.org/pkg/tds)
+
+  * create the subdirectory `path\to\texmf\tex\latex\` and copy in there the content of `\latex-styles\styles\`.
+
+  * create the subdirectory `path\to\texmf\bibtex\bib` and copy in there the folder `\latex-styles\share`.
+
+  * create the subdirectory `path\to\texmf\bibtex\bts` and copy in there the folder `\latex-styles\share`.
+
+### Windows (MiKTeX)
+
+* See [this discussion thread](https://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex)
 
 ## Basic Styles
 
