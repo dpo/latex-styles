@@ -121,7 +121,7 @@
 \global\let\journalopt\CurrentOption}{%
 \ClassWarning{Springer-SVJour3}{Specified option or subpackage
 "\CurrentOption" not found -}\OptionNotUsed}}
-\ExecuteOptions{a4paper,twoside,10pt,instindent}
+\ExecuteOptions{a4paper,10pt,instindent}
 \ProcessOptions
 %
 \ifx\journalopt\@empty\relax
@@ -182,7 +182,7 @@ Springer class SVJour!}
 \setlength{\skip\footins}{9\p@ \@plus 4\p@ \@minus 2\p@}
 \setlength\floatsep    {12\p@ \@plus 2\p@ \@minus 2\p@}
 \setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
-\setlength\intextsep   {20\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength\intextsep   {10\p@ \@plus 2\p@ \@minus 2\p@}
 \setlength\dblfloatsep    {12\p@ \@plus 2\p@ \@minus 2\p@}
 \setlength\dbltextfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
 \setlength\@fptop{0\p@}

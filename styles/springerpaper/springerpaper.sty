@@ -6,8 +6,6 @@
 \usepackage{amsmath}
 % fix conflict between svjour3 and cleveref (https://tex.stackexchange.com/questions/327414/svjour3-and-certain-packages-conflict/327686#327686)
 \newcounter{chapter} % to fix the bug in svjour3
-\usepackage{latex_styles_common0}
-\usepackage{latex_styles_common}
 %
 % Definitions specific to springerpaper.
 %
@@ -48,6 +46,9 @@
 %
 % Environments.
 %
+\usepackage{latex_styles_common}
+\usepackage{latex_styles_common0}
 \crefname{lemma}{Lemma}{Lemmas}
 \crefname{theorem}{Theorem}{Theorems}
 \crefname{corollary}{Corollary}{Corollaries}
+\setlength{\marginparwidth}{6cm}
