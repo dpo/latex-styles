@@ -1,0 +1,89 @@
+\documentclass[manuscript, screen, review]{acmart} % Use [acmsmall, screen] when ready.
+
+\usepackage{acmpaper}
+
+% For the Cahier du GERAD.
+%\renewcommand{\year}{2020}     % If you don't want the current year.
+\newcommand{\cahiernumber}{00}  % Insert your Cahier du GERAD number.
+
+%\setcopyright{acmlicensed}
+%\copyrightyear{2018}
+%\acmYear{2018}
+%\acmDOI{XXXXXXX.XXXXXXX}
+
+% Insert the name of "your journal" with
+\acmJournal{TOMS}
+
+\begin{document}
+
+\title{ExactPenalty: an Exact Penalty approach for Large-Scale Nonlinear Optimization}
+
+\author{Youssef Diouane}
+\affiliation{%
+  \institution{GERAD and Polytechnique Montr\'eal},
+  \country{Canada}
+}
+\email{youssef.diouane@polymtl.ca}
+
+\author{Maxence Gollier}
+\affiliation{%
+  \institution{GERAD and Polytechnique Montr\'eal},
+  \country{Canada}
+}
+\email{maxence-2.gollier@polymtl.ca}
+
+\author{Dominique Orban}
+\affiliation{%
+  \institution{GERAD and Polytechnique Montr\'eal},
+  \country{Canada}
+}
+\email{dominique.orban@gerad.ca}
+
+
+\begin{abstract}
+  Insert abstract here. 
+\end{abstract}
+
+\keywords{Keyword1, Keyword2, Keyword3}
+
+%\received{20 February 2007}
+%\received[revised]{12 March 2009}
+%\received[accepted]{5 June 2009}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\tableofcontents
+\listoftodos\relax
+
+\section{Introduction}
+
+This is the introduction. An optimization problem has the general form
+\begin{equation}
+  \label{eq:opt-problem}
+  \minimize{x \in \R^n} \ f(x) \quad \st \ \ell \leq c(x) \leq u.
+\end{equation}
+
+For the real stuff, check \citet{wright-orban-2002}.
+
+Our conclusions appear in \Cref{sec:conclusion}.
+
+\section{Conclusion}%
+\label{sec:conclusion}
+
+Concusions will come in due time.
+\smarttodo{Come up with witty conclusions}
+
+\begin{acks}
+To Robert, for the bagels and explaining CMYK and color spaces.
+\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{abbrvnat}
+\bibliography{abbrv, \jobname}
+
+\end{document}
