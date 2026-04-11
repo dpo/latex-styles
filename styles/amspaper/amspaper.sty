@@ -1,6 +1,9 @@
 %
 % Import definitions common to all styles.
 %
+\makeatletter
+\@ifundefined{bibindent}{\newlength{\bibindent}}{}
+\makeatother
 \usepackage{latex_styles_common1}
 \usepackage{latex_styles_common0}
 \usepackage{latex_styles_common}
