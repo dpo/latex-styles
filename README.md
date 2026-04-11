@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/dpo/latex-styles/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/dpo/latex-styles/actions)
+
 # LaTeX Styles
 
 This repository contains LaTeX styles I find useful to write scientific papers
