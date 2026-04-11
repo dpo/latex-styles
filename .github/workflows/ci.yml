@@ -1,0 +1,55 @@
+name: Build templates
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
+jobs:
+  build_templates:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template:
+          ["amspaper", "siampaper", "springerpaper", "acmpaper", "llncspaper"]
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up ${{ matrix.template }} template
+        run: |
+          git config --global advice.defaultBranchName false
+          git config --global user.email "chuck.norris@kungfu.com"
+          git config --global user.name "Chuck Norris"
+          $LATEX_STYLES/bin/new-paper ${{ matrix.template }} mypaper
+        env:
+          LATEX_STYLES: ${{ github.workspace }}
+      - name: Compile ${{ matrix.template }} template
+        uses: xu-cheng/latex-action@v4
+        with:
+          texlive_version: 2026
+          root_file: |
+            mypaper.tex
+            mypaper-response-to-referees.tex
+          working_directory: ${{ github.workspace }}/mypaper/paper
+          extra_system_packages: "git patch"
+          latexmk_shell_escape: true
+          pre_compile: git config --global --add safe.directory /github/workspace
+        env:
+          TEXINPUTS: ".:$GITHUB_WORKSPACE/styles//:"
+          BSTINPUTS: ".:$GITHUB_WORKSPACE/styles/common"
+          BIBINPUTS: ".:$GITHUB_WORKSPACE/share"
+      - name: Upload PDF artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.template }}-PDFs
+          path: |
+            ${{ github.workspace }}/mypaper/paper/mypaper.pdf
+            ${{ github.workspace }}/mypaper/paper/mypaper-response-to-referees.pdf
