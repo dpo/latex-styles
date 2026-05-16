@@ -13,6 +13,21 @@
 \fi
 \renewcommand*{\bibfont}{\footnotesize}
 %
+% Backrefs for the bibliography.
+% We have to configure them manually because the SIAM style loads hyperref before we load natbib.
+%
+\usepackage[hyperpageref]{backref}
+\renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 %
+No citations.%
+\or
+\marginpar{\tiny cited on p. #2}%
+\else
+\marginpar{\tiny cited on pp. #2}%
+\fi
+}
+%
 % Page styles.
 %
 \def\ps@firstpage{%\ps@plain
