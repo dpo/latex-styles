@@ -18,13 +18,16 @@
 %
 \usepackage[hyperpageref]{backref}
 \renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
+\renewcommand*{\backrefsep}{, }%
+\renewcommand*{\backreftwosep}{, }%
+\renewcommand*{\backreflastsep}{, }%
 \renewcommand*{\backrefalt}[4]{%
 \ifcase #1 %
 No citations.%
 \or
-\marginpar{\tiny cited on p. #2}%
+\marginpar{\tiny #2}%
 \else
-\marginpar{\tiny cited on pp. #2}%
+\marginpar{\tiny #2}%
 \fi
 }
 %
