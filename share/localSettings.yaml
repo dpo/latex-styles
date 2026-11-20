@@ -44,7 +44,7 @@ modifyLineBreaks:
             betterFullStop: 0
             exclamationMark: 0
             questionMark: 0
-            other: "\.\)|\?\)|\!\)|\. |\? |\! "  # account for parenthetical sentences
+            other: "\.\)|\?\)|\!\)|\.\s*|\?\s*|\!\s*"  # account for parenthetical sentences
     commands:
         label:
             CommandStartsOnOwnLine: 1
