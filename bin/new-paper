@@ -46,6 +46,7 @@ mkdir -p $workflows
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
 cp $LATEX_STYLES/share/template.bib ./$paper/$papername.bib
 cp $LATEX_STYLES/share/response-to-referees.tex ./$paper/$papername-response-to-referees.tex
+cp $LATEX_STYLES/share/letter.tex ./$paper/$papername-letter.tex
 cp $LATEX_STYLES/share/gitignore ./$papername/.gitignore
 cp $LATEX_STYLES/share/README.md ./$papername/README.md
 cp $LATEX_STYLES/share/localSettings.yaml ./$paper/

@@ -1,0 +1,55 @@
+\documentclass[letter,10pt]{letter}
+
+\newcommand{\authorname}{Joe A. Student}
+\newcommand{\authoremail}{joe.student@gerad.ca}
+\newcommand{\eictitle}{Prof}
+\newcommand{\eicname}{XYZ}  % name of editor-in-chief
+\newcommand{\journalname}{SIAM Journal on ABC}
+
+\signature{%
+  \authorname
+}
+
+\address{%
+   \authorname
+\\ GERAD and Polytechnique Montr\'eal
+\\ Montr\'eal QC, Canada
+\\ \authoremail
+}
+
+\begin{document}
+
+\begin{letter}{%
+    \eictitle{} \eicname
+    \\ Editor-in-Chief
+    \\ \journalname
+  }
+
+  \opening{Dear \eictitle{} \eicname,}
+
+  We would like to submit the manuscript
+  \begin{center}
+    {\it MANUSCRIPT TITLE}
+    \\ by \authorname{}, Dominique Orban, and COAUTHOR.
+  \end{center}
+  for possible publication in the \journalname.
+
+  We propose a novel solver named SOLVERNAME for solving PROBLEMTYPE.
+  Some salient points of our solvers are
+
+  \begin{itemize}
+    \item salient point 1;
+    \item salient point 2;
+    \item an open-source Julia implementation applicable in any floating-point system that runs on CPU and GPU.
+  \end{itemize}
+
+  We believe our manuscript will be of interest to the \journalname{} readership.
+  This research has not been published or submitted simultaneously for publication elsewhere.
+
+  We look forward to hearing from you in due course.
+
+  \closing{Sincerely,}
+  \cc{Dominique Orban, COAUTHOR}
+\end{letter}
+
+\end{document}
