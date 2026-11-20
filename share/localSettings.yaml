@@ -36,15 +36,15 @@ modifyLineBreaks:
         manipulateSentences: 1
         removeSentenceLineBreaks: 1
         sentencesBeginWith:
-            A-Z: 0
+            A-Z: 1
             a-z: 0
-            other: "\([A-Z]|[A-Z]|\$|\\\\\("  # account for parenthetical sentences
+            # other: "\([A-Z]|[A-Z]|\$|\\\\\("  # account for parenthetical sentences
         sentencesEndWith:
-            basicFullStop: 0
-            betterFullStop: 0
-            exclamationMark: 0
-            questionMark: 0
-            other: "\.\)|\?\)|\!\)|\.\s*|\?\s*|\!\s*"  # account for parenthetical sentences
+            basicFullStop: 1
+            betterFullStop: 1
+            exclamationMark: 1
+            questionMark: 1
+            # other: "\.\)|\?\)|\!\)|\. |\? |\! "  # account for parenthetical sentences
     commands:
         label:
             CommandStartsOnOwnLine: 1
