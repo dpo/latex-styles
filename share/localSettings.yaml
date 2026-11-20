@@ -34,7 +34,7 @@ verbatimCommands:
 modifyLineBreaks:
     oneSentencePerLine:
         manipulateSentences: 1
-        removeSentenceLineBreaks: 0
+        removeSentenceLineBreaks: 1
         sentencesBeginWith:
             A-Z: 0
             a-z: 0
@@ -82,11 +82,11 @@ modifyLineBreaks:
         and:
           SpecialEndFinishesWithLineBreak: 1
 
-specialBeginEnd:
-    and:
-        begin: \\an
-        end: d          # d
-        lookForThis: 1
+# specialBeginEnd:
+#     and:
+#         begin: \\an
+#         end: d          # d
+#         lookForThis: 1
 
 replacements:
   -
