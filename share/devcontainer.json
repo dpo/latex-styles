@@ -61,7 +61,7 @@
       }
     }
   },
-  "postCreateCommand": "set -e; LATEX_STYLES_DIR=\"/opt/latex-styles\"; if [ ! -d \"${LATEX_STYLES_DIR}/.git\" ]; then git clone --depth 1 https://github.com/dpo/latex-styles.git \"${LATEX_STYLES_DIR}\"; fi; grep -qxF 'export LATEX_STYLES=${CONTAINER_WORKSPACE_FOLDER}/../latex-styles' ~/.bashrc || echo 'export LATEX_STYLES=${CONTAINER_WORKSPACE_FOLDER}/../latex-styles' >> ~/.bashrc; grep -qxF 'export TEXINPUTS=.:${LATEX_STYLES}/styles//:${TEXINPUTS}' ~/.bashrc || echo 'export TEXINPUTS=.:${LATEX_STYLES}/styles//:${TEXINPUTS}' >> ~/.bashrc; grep -qxF 'export BSTINPUTS=.:${LATEX_STYLES}/styles/common::' ~/.bashrc || echo 'export BSTINPUTS=.:${LATEX_STYLES}/styles/common::' >> ~/.bashrc; grep -qxF 'export BIBINPUTS=.:${LATEX_STYLES}/share::' ~/.bashrc || echo 'export BIBINPUTS=.:${LATEX_STYLES}/share::' >> ~/.bashrc",
+  "postCreateCommand": "set -e; LATEX_STYLES_DIR=\"/opt/latex-styles\"; if [ ! -d \"${LATEX_STYLES_DIR}/.git\" ]; then git clone --depth 1 https://github.com/dpo/latex-styles.git \"${LATEX_STYLES_DIR}\"; fi; grep -qxF 'export LATEX_STYLES=/opt/latex-styles' ~/.bashrc || echo 'export LATEX_STYLES=/opt/latex-styles' >> ~/.bashrc; grep -qxF 'export TEXINPUTS=.:${LATEX_STYLES}/styles//:${TEXINPUTS}' ~/.bashrc || echo 'export TEXINPUTS=.:${LATEX_STYLES}/styles//:${TEXINPUTS}' >> ~/.bashrc; grep -qxF 'export BSTINPUTS=.:${LATEX_STYLES}/styles/common::' ~/.bashrc || echo 'export BSTINPUTS=.:${LATEX_STYLES}/styles/common::' >> ~/.bashrc; grep -qxF 'export BIBINPUTS=.:${LATEX_STYLES}/share::' ~/.bashrc || echo 'export BIBINPUTS=.:${LATEX_STYLES}/share::' >> ~/.bashrc",
   "remoteEnv": {
     "LATEX_STYLES": "/opt/latex-styles",
     "TEXINPUTS": ".:/opt/latex-styles/styles//:",
