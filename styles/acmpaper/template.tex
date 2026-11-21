@@ -54,9 +54,11 @@
 %% This command processes the author and affiliation and title
 %% information and builds the first part of the formatted document.
 \linenumbers
-\maketitle
-\thispagestyle{firstpage}
+\makeatletter
+\let\ps@firstpagestyle\ps@firstpage
+\makeatother
 \pagestyle{geradheadings}
+\maketitle
 
 \hypertarget{contents}{}
 \tableofcontents
