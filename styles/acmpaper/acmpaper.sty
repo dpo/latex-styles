@@ -2,5 +2,20 @@
 %
 % Import definitions common to all styles.
 %
-\usepackage{latex_styles_common}
 \usepackage{latex_styles_common0}
+\usepackage{latex_styles_common}
+
+\usepackage{subdepth}  % Equalize depth of subscripts. Amazing!
+% Backrefs for the bibliography.
+%
+\usepackage[hyperpageref]{backref}
+\renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
+\renewcommand*{\backrefalt}[4]{%
+	\ifcase #1 %
+		No citations.%
+	\or
+		\marginpar{\tiny cited on p. #2}%
+	\else
+		\marginpar{\tiny cited on pp. #2}%
+	\fi
+}
