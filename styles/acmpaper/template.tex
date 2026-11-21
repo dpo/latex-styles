@@ -53,8 +53,14 @@
 %%
 %% This command processes the author and affiliation and title
 %% information and builds the first part of the formatted document.
+\linenumbers
+\makeatletter
+\let\ps@firstpagestyle\ps@firstpage
+\makeatother
+\pagestyle{geradheadings}
 \maketitle
 
+\hypertarget{contents}{}
 \tableofcontents
 \listoftodos\relax
 
