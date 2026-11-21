@@ -1,0 +1,71 @@
+{
+  "name": "LaTeX Codespace",
+  "image": "ghcr.io/xu-cheng/texlive-full:20260701",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "valentjn.vscode-ltex",
+        "James-Yu.latex-workshop",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "github.copilot.enable": {
+          "*": true
+        },
+        "github.copilot.editor.enableAutoCompletions": true,
+        "chat.agent.enabled": true,
+        "latex-workshop.latexindent.path": "latexindent",
+        "latex-workshop.latexindent.args": [
+          "-l",
+          "%DIR%/localSettings.yaml",
+          "-c",
+          "%DIR%/",
+          "-m",
+          "-r",
+          "-w",
+          "%TMPFILE%"
+        ],
+        "latex-workshop.linting.chktex.enabled": true,
+        "latex-workshop.linting.chktex.exec.path": "chktex",
+        "ltex.additionalRules.enablePickyRules": true,
+        "ltex.additionalRules.motherTongue": "fr",
+        "ltex.checkFrequency": "save",
+        "ltex.completionEnabled": true,
+        "latex-workshop.latex.tools": [
+          {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+            ]
+          },
+          {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "set -e; LATEX_STYLES_DIR=\"/opt/latex-styles\"; if [ ! -d \"${LATEX_STYLES_DIR}/.git\" ]; then git clone --depth 1 https://github.com/dpo/latex-styles.git \"${LATEX_STYLES_DIR}\"; fi; grep -qxF 'export LATEX_STYLES=/opt/latex-styles' ~/.bashrc || echo 'export LATEX_STYLES=/opt/latex-styles' >> ~/.bashrc; grep -qxF 'export TEXINPUTS=.:${LATEX_STYLES}/styles//:${TEXINPUTS}' ~/.bashrc || echo 'export TEXINPUTS=.:${LATEX_STYLES}/styles//:${TEXINPUTS}' >> ~/.bashrc; grep -qxF 'export BSTINPUTS=.:${LATEX_STYLES}/styles/common::' ~/.bashrc || echo 'export BSTINPUTS=.:${LATEX_STYLES}/styles/common::' >> ~/.bashrc; grep -qxF 'export BIBINPUTS=.:${LATEX_STYLES}/share::' ~/.bashrc || echo 'export BIBINPUTS=.:${LATEX_STYLES}/share::' >> ~/.bashrc",
+  "remoteEnv": {
+    "LATEX_STYLES": "/opt/latex-styles",
+    "TEXINPUTS": ".:/opt/latex-styles/styles//:",
+    "BSTINPUTS": ".:/opt/latex-styles/styles/common::",
+    "BIBINPUTS": ".:/opt/latex-styles/share::"
+  }
+}

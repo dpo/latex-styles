@@ -37,12 +37,14 @@ paper=$papername/paper
 code=$papername/code
 talk=$papername/talk
 workflows=$papername/.github/workflows
+codespace=$papername/.devcontainer
 
 mkdir $papername
 mkdir $paper
 mkdir $code
 mkdir $talk
 mkdir -p $workflows
+mkdir $codespace
 cp $styleshome/$style/template.tex ./$paper/$papername.tex
 cp $LATEX_STYLES/share/template.bib ./$paper/$papername.bib
 cp $LATEX_STYLES/share/response-to-referees.tex ./$paper/$papername-response-to-referees.tex
@@ -53,6 +55,7 @@ cp $LATEX_STYLES/share/localSettings.yaml ./$paper/
 cp $LATEX_STYLES/share/local.rsc ./$paper/
 cp $LATEX_STYLES/share/chktexrc ./$paper/.chktexrc
 cp $LATEX_STYLES/github-workflows/* ./$workflows/
+cp $LATEX_STYLES/share/devcontainer.json ./$codespace/
 cd $papername
 
 # Initialize git.
