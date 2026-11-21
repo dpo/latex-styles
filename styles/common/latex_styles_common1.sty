@@ -1,5 +1,3 @@
-% The following settings are redundant/fail with the ACM style
-
 \usepackage{amssymb}
 \usepackage{subdepth}  % Equalize depth of subscripts. Amazing!
 
@@ -97,3 +95,17 @@
   \endgroup
 }
 \makeatother
+%
+% Backrefs for the bibliography.
+%
+\usepackage[hyperpageref]{backref}
+\renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
+\renewcommand*{\backrefalt}[4]{%
+	\ifcase #1 %
+		No citations.%
+	\or
+		\marginpar{\tiny cited on p. #2}%
+	\else
+		\marginpar{\tiny cited on pp. #2}%
+	\fi
+}

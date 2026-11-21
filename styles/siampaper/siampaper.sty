@@ -13,11 +13,8 @@
 \fi
 \renewcommand*{\bibfont}{\footnotesize}
 %
-% Backrefs for the bibliography.
-% We have to configure them manually because the SIAM style loads hyperref before we load natbib.
+% Make backrefs more compact due to tight margins.
 %
-\usepackage[hyperpageref]{backref}
-\renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
 \renewcommand*{\backrefsep}{, }%
 \renewcommand*{\backreftwosep}{, }%
 \renewcommand*{\backreflastsep}{, }%
